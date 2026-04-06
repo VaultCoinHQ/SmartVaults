@@ -1,8 +1,42 @@
 #!/bin/bash
 
 #####################################
+# Using bitcoind and bitcoin-cli 
+# as much as possible to demonstrate 
+# the Layer 2 SmartVaults protocol
+# and Hybrid Custody
+#####################################
 
 bitcoin-cli -named createwallet wallet_name="POC" descriptors=false >/dev/null 2>&1
+
+echo "-------------"
+echo "Bootstrapping the Sentinel (co-signer)"
+echo "-------------"
+
+#Sentinel - Keys
+
+#SentinelPriv="cS71P5KPZbgGYhkXfTomFNYxq2NRccQb8Zkw3XEQkMVnQdSvAYQn"
+#SentinelPub="03cb7ef39e4bf4e487f73dd8c0ac6f0ef112a6ac7b3fa09546007121605bfa7c7b"
+
+echo "-------------"
+echo "Generating Sentinel's Priv-Pub-Addr"
+echo "-------------"
+
+SentinelAdrs=$(bitcoin-cli getnewaddress)
+SentinelPriv=$(bitcoin-cli dumpprivkey "$SentinelAdrs")
+SentinelPub=$(bitcoin-cli getaddressinfo "$SentinelAdrs" | jq -r .pubkey)
+
+echo "Private Key: $SentinelPriv"
+echo "Public Key: $SentinelPub"
+echo "Address: $SentinelAdrs"
+
+echo "-------------"
+echo "Sentinel is ready!"
+echo "Lets initialize your credentials..."
+echo "-------------"
+
+read -n 1 -s -r -p "Press any key to generate a key pair for you..."
+echo ""
 
 #User - Keys
 
@@ -21,23 +55,6 @@ echo "Private Key: $UserPriv"
 echo "Public Key: $UserPub"
 echo "Address: $UserAdrs"
 
-#Ledger - Keys
-
-#LedgerPriv="cS71P5KPZbgGYhkXfTomFNYxq2NRccQb8Zkw3XEQkMVnQdSvAYQn"
-#LedgerPub="03cb7ef39e4bf4e487f73dd8c0ac6f0ef112a6ac7b3fa09546007121605bfa7c7b"
-
-echo "-------------"
-echo "Generating Ledger's Priv-Pub-Addr"
-echo "-------------"
-
-LedgerAdrs=$(bitcoin-cli getnewaddress)
-LedgerPriv=$(bitcoin-cli dumpprivkey "$LedgerAdrs")
-LedgerPub=$(bitcoin-cli getaddressinfo "$LedgerAdrs" | jq -r .pubkey)
-
-echo "Private Key: $LedgerPriv"
-echo "Public Key: $LedgerPub"
-echo "Address: $LedgerAdrs"
-
 #####################################
 
 echo "-------------"
@@ -48,8 +65,18 @@ bitcoin-cli generatetoaddress 101 "$UserAdrs" >/dev/null 2>&1
 #bitcoin-cli importaddress "$UserAdrs"
 echo "Done"
 
-utxo_txid_1=$(bitcoin-cli listunspent | jq -r '.[0] | .txid')
-utxo_vout_1=$(bitcoin-cli listunspent | jq -r '.[0] | .vout')
+unspent=$(bitcoin-cli listunspent)
+
+utxo_txid_1=$(echo $unspent | jq -r '.[0] | .txid')
+utxo_vout_1=$(echo $unspent | jq -r '.[0] | .vout')
+utxo_amount_1=$(echo $unspent | jq -r '.[0] | .amount')
+
+clear; echo ""
+
+echo "Balance: $(bitcoin-cli listunspent 1 9999999 "[\"$UserAdrs\"]" | jq '[.[].amount] | add') BTC"
+
+read -n 1 -s -r -p "Press any key to start Hybrid Custody Vault setup..."
+echo ""
 
 # Create Deposit Transaction
 
@@ -62,19 +89,19 @@ echo "-------------"
 #
 # contract Deposit(
 #   user: PublicKey,
-#   ledger: PublicKey,
+#   sentinel: PublicKey,
 #   val: Value
 # ) 
 # {
-#   clause spend(userSig: Signature, ledgerSig: Signature) {
-#     verify checkMultiSig([user, ledger], [userSig, ledgerSig])
+#   clause spend(userSig: Signature, sentinelSig: Signature) {
+#     verify checkMultiSig([user, sentinel], [userSig, sentinelSig])
 #     unlock val
 #   }
 # }
 #####################################################################
 
 #DepositTxRedeemScript="2103cb7ef39e4bf4e487f73dd8c0ac6f0ef112a6ac7b3fa09546007121605bfa7c7b21023320c921fb86d276cf996c97a3f3893e5da2c03926acd1d5160d0ccdb582f41600547a547a527152ae"
-DepositTxRedeemScript="21${LedgerPub}21${UserPub}00547a547a527152ae"
+DepositTxRedeemScript="21${SentinelPub}21${UserPub}00547a547a527152ae"
 
 echo $DepositTxRedeemScript
 
@@ -109,6 +136,9 @@ echo "-------------"
 
 echo $DepositTxOutputAddress
 
+fee=0.001
+amount=$(echo "scale=8; $utxo_amount_1 - $fee" | bc)
+
 read -r -d '' DepositTxInputs <<-EOM
     [
         {
@@ -121,10 +151,12 @@ EOM
 read -r -d '' DepositTxOutputs <<-EOM
     [
         {
-            "$DepositTxOutputAddress": 49.999
+            "$DepositTxOutputAddress": $amount
         }
     ]
 EOM
+
+bitcoin-cli importaddress "$DepositTxOutputAddress"
 
 echo "-------------"
 echo "Creating Unsigned Deposit Tx"
@@ -169,18 +201,14 @@ DepositTxID=$(bitcoin-cli decoderawtransaction "$DepositTxSigned" | jq -r '.txid
 DepositTxScriptPubKey=$(bitcoin-cli decoderawtransaction "$DepositTxSigned" | jq '.vout[0] | .scriptPubKey.hex')
 DepositTxAmount=$(bitcoin-cli decoderawtransaction "$DepositTxSigned" | jq '.vout[0] | .value')
 
-echo "-------------"
-echo "Provsional Tx Redeem Script"
-echo "-------------"
-
 #####################################################################
-# Provisional Transaction - Script / Smart Contract - Ivy Lang
+# Unlock Tx (Provisional Tx) - Script / Smart Contract - Ivy Lang
 #
 # contract SmartVault(
 #   user: PublicKey,
-#   ledger: PublicKey,
+#   sentinel: PublicKey,
 #   userDelay: Duration,
-#   ledgerDelay: Duration,
+#   sentinelDelay: Duration,
 #   val: Value
 # ) 
 # {  
@@ -191,34 +219,129 @@ echo "-------------"
 #     unlock val
 #   }
 #   /* Option : 2 [5000] */
-#   clause Ledger(ledgerSig: Signature) {
-#     verify checkSig(ledger, ledgerSig)
-#     verify older(ledgerDelay)
+#   clause Sentinel(sentinelSig: Signature) {
+#     verify checkSig(sentinel, sentinelSig)
+#     verify older(sentinelDelay)
 #     unlock val
 #   }
 #   /* Option : 3 */
-#   clause MultiSig(userSig: Signature, ledgerSig: Signature) {
-#     verify checkMultiSig([user, ledger], [userSig, ledgerSig])
+#   clause MultiSig(userSig: Signature, sentinelSig: Signature) {
+#     verify checkMultiSig([user, sentinel], [userSig, sentinelSig])
 #     unlock val
 #   }
 # }
 #####################################################################
 
-UserDelay=1000
+clear; echo ""
+
+echo "-------------"
+echo "Your Vault has a 2-step Unlock and Spend process to transfer from it"
+echo "and there is a mandatory yet configureable delay enforced between these"
+echo "Unlock and Spend Transactions for every private-key/combination allowed"
+echo "to spend from this Vault."
+echo "-------------"
+
+read -n 1 -s -r -p "Press any key to configure these delays and continue..."
+echo ""
+
+clear; echo ""
+
+echo "-------------"
+echo "Lets configure the on-chain delay / cooling period"
+echo "for spending with your private-key from your Vault!"
+echo ""
+echo "This will give you time to react and initiate recovery"
+echo "when your private-key or wallet backup (seed phrase) is stolen"
+echo "and is used to unlock your Vault."
+echo "-------------"
+
+default=1000; 
+read -p "Enter delay in blocks or press [Return] to use default [$default]: " input; input=${input:-$default}; [[ "$input" =~ ^[0-9]+$ && "$((10#$input))" -gt 0 ]] && input=$((10#$input)) || { echo "Invalid input, using $default"; input=$default; }
+
+UserDelay=$input
 echo "Setting Option 1 (User Private-Key Only) Delay to $UserDelay"
 UserDelayCoded=$(python3 helpers/number_coding.py --encode $UserDelay) #500=f401
 
-LedgerDelay=5000
-echo "Setting Option 2 (Ledger Private-Key Only) Delay to $LedgerDelay"
-LedgerDelayCoded=$(python3 helpers/number_coding.py --encode $LedgerDelay) #2500=c409
-
-echo "Hex:"
-ProvTxRedeemScript="02${LedgerDelayCoded}02${UserDelayCoded}21${LedgerPub}21${UserPub}54795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868"
-
-echo $ProvTxRedeemScript
+clear; echo ""
 
 echo "-------------"
-echo "Checking Provisional Tx Redeem Script"
+echo "Now, lets configure the on-chain delay / cooling period" 
+echo "for spending with the Sentinel private-key from your Vault!"
+echo ""
+echo "This is the delay your Sentinel has to wait before he can"
+echo "transfer/recover from your Vault in case your private-key"
+echo "is lost or for managing your inheritance."
+echo ""
+echo "PS: This is typically much longer than the previously set delay"
+echo "and will give you time to react and override any spend attempt"
+echo "by compromised/rogue Sentinels with just your private-key"
+echo "eliminating counter-party risk in the Hybrid Custody Ecosystem."
+echo "-------------"
+
+default=5000; 
+read -p "Enter delay in blocks or press [Return] to use default [$default]: " input; input=${input:-$default}; [[ "$input" =~ ^[0-9]+$ && "$((10#$input))" -gt 0 ]] && input=$((10#$input)) || { echo "Invalid input, using $default"; input=$default; }
+
+if (( input <= UserDelay )); then
+    echo "Sentinel Delay cannot be smaller than User Delay. Using $default"
+    input=$default
+fi
+
+SentinelDelay=$input
+echo "Setting Option 2 (Sentinel Private-Key Only) Delay to $SentinelDelay"
+SentinelDelayCoded=$(python3 helpers/number_coding.py --encode $SentinelDelay) #2500=c409
+
+# 1. Default Recovery Address
+DefaultRecoveryAdrs=$(bitcoin-cli getnewaddress)
+
+clear; echo ""
+
+# 2. Prompt the user
+echo "-------------"
+echo "Now, lets configure the Recovery Address for your Vault!" 
+echo ""
+echo "Once your private-keys are lost or stolen, it is not"
+echo "safe to recover your Vault to an address controlled by you"
+echo "as we never know how deep the compromise is."
+echo ""
+echo "The best approach would be to temporarily transfer the coins in your"
+echo "Vault to a custodial wallet address (Coinbase, Binance, etc.) and disable"
+echo "withdrawls from it until you can create a new secure cold-storage wallet and Vault."
+echo ""
+echo "Alternatively, you can setup a new unused Hardware Wallet"
+echo "with a new seed phrase and store both the hardware wallet and"
+echo "seedphrase backup in a bank locker and use this wallet's address as Recovery Address!"
+echo ""
+echo "PS: Sentinels are bound by on-chain Staking/Slashing mechanics"
+echo "to only sign Recovery transactions to this Preconfigured Recovery Address"
+echo "as no user provided input can be trusted post compromise/setup!"
+echo "-------------"
+read -p "Enter Recovery Address or press [Return] to use default [$DefaultRecoveryAdrs]: " input
+
+# 3. Apply default if input is empty
+input=${input:-$DefaultRecoveryAdrs}
+
+# 4. Validation: Check if the address looks remotely valid (not empty/too short)
+# Most BTC addresses are at least 26 characters. 
+if [[ ${#input} -ge 26 ]]; then
+    RecoveryAddress=$input
+    bitcoin-cli importaddress "$DefaultRecoveryAdrs"
+else
+    echo "Invalid address format. Falling back to default."
+    RecoveryAddress=$DefaultRecoveryAdrs
+fi
+
+echo "Proceeding with Recovery Address: $RecoveryAddress"
+
+echo "-------------"
+echo "Unlock Tx (Provisional Tx) Redeem Script"
+echo "-------------"
+
+ProvTxRedeemScript="02${SentinelDelayCoded}02${UserDelayCoded}21${SentinelPub}21${UserPub}54795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868"
+
+echo "Hex: $ProvTxRedeemScript"
+
+echo "-------------"
+echo "Checking Unlock Tx (Provisional Tx) Redeem Script"
 echo "-------------"
 
 bitcoin-cli decodescript "$ProvTxRedeemScript"
@@ -242,7 +365,7 @@ bitcoin-cli decodescript "$ProvTxRedeemScript"
 # }
 
 echo "-------------"
-echo "Provisional Tx - Script to Address"
+echo "Unlock Tx (Provisional Tx) - Script to Address"
 echo "-------------"
 
 ProvTxOutputAddress=$(bitcoin-cli decodescript "$ProvTxRedeemScript" | jq -r .segwit.address)
@@ -250,6 +373,8 @@ ProvTxOutputAddress=$(bitcoin-cli decodescript "$ProvTxRedeemScript" | jq -r .se
 echo $ProvTxOutputAddress
 
 ###########
+fee=0.001
+amount=$(echo "scale=8; $amount - $fee" | bc)
 
 read -r -d '' ProvTxInputs <<-EOM
     [
@@ -263,13 +388,13 @@ EOM
 read -r -d '' ProvTxOutputs <<-EOM
     [
         {
-            "$ProvTxOutputAddress": 49.998
+            "$ProvTxOutputAddress": $amount
         }
     ]
 EOM
 
 echo "-------------"
-echo "Creating Unsigned Provisional Tx"
+echo "Creating Unsigned Unlock Tx (Provisional Tx)"
 echo "-------------"
 
 ProvTx=$(bitcoin-cli createrawtransaction "$ProvTxInputs" "$ProvTxOutputs")
@@ -277,76 +402,76 @@ ProvTx=$(bitcoin-cli createrawtransaction "$ProvTxInputs" "$ProvTxOutputs")
 echo $ProvTx
 
 echo "-------------"
-echo "Checking Unsigned Prov Tx Created by User"
+echo "Checking Unsigned Unlock Tx Created by User"
 echo "-------------"
 
 bitcoin-cli decoderawtransaction "$ProvTx"
 
 echo "-------------"
-echo "Simulating the transfer of Unsigned Provisional Tx copy"
-echo "to Ledger!"
+echo "Simulating the transfer of Unsigned Unlock Tx (Provisional Tx) copy"
+echo "to Sentinel!"
 echo "-------------"
 
-echo "[U] --> Unsigned Provisional Tx --> [L]"
+echo "[U] --> Unsigned Unlock Tx (Provisional Tx) --> [S]"
 
 echo "-------------"
-echo "Ledger signs the Unsigned Provisional Tx"
+echo "Sentinel signs the Unsigned Unlock Tx (Provisional Tx)"
 echo "with his Private Key"
 echo "-------------"
 
-LedgerSignatureProv=$(python3 helpers/sign_tx.py $ProvTx 0 $DepositTxAmount $DepositTxRedeemScript $LedgerPriv SIGHASH_ALL True)
+SentinelSignatureProv=$(python3 helpers/sign_tx.py $ProvTx 0 $DepositTxAmount $DepositTxRedeemScript $SentinelPriv SIGHASH_ALL True)
 
 echo "-------------"
-echo "ProvTx - Ledger's Signature"
+echo "Unlock Tx (Provisional Tx) - Sentinel's Signature"
 echo "-------------"
 
-echo $LedgerSignatureProv
+echo $SentinelSignatureProv
 
 echo "-------------"
-echo "Simulating the transfer of Partially Signed Provisional Tx"
+echo "Simulating the transfer of Partially Signed Unlock Tx (Provisional Tx)"
 echo "to User!"
 echo "-------------"
 
-echo "[L] --> Partially Signed Provisional Tx --> [U]"
+echo "[S] --> Partially Signed Unlock Tx (Provisional Tx) --> [U]"
 
 ####################################
 
 echo "-------------"
-echo "User signs the Unsigned Provisional Tx"
+echo "User signs the Unsigned Unlock Tx (Provisional Tx)"
 echo "with his Private Key"
 echo "-------------"
 
 UserSignatureProv=$(python3 helpers/sign_tx.py $ProvTx 0 $DepositTxAmount $DepositTxRedeemScript $UserPriv SIGHASH_ALL True)
 
 echo "-------------"
-echo "ProvTx - User Signature"
+echo "Unlock Tx (Provisional Tx) - User Signature"
 echo "-------------"
 
 echo $UserSignatureProv
 
 echo "-------------"
-echo "Simulating the transfer of Partially Signed Provisional Tx copy"
-echo "to Ledger!"
+echo "Simulating the transfer of Partially Signed Unlock Tx (Provisional Tx) copy"
+echo "to Sentinel!"
 echo "-------------"
 
-echo "[U] --> Partially Signed Provisional Tx --> [L]"
+echo "[U] --> Partially Signed Provisional Tx --> [S]"
 
 #######################################
 #
-# Deositor will broadcast DepositTx
+# User will broadcast DepositTx
 # after receiving the
 # Partially Signed Prov. Tx with
-# Ledger's signature already added to it
+# Sentinel's signature already added to it
 #
 #######################################
 
 echo "-------------"
 echo "User signs & broadcasts the Deposit Tx"
-echo "after receiving the Partially signed Provisional Tx"
+echo "after receiving the Partially signed Unlock Tx (Provisional Tx)"
 echo "-------------"
 
 #Broadcast DepositTx
-bitcoin-cli sendrawtransaction "$DepositTxSigned" >/dev/null 2>&1
+bitcoin-cli sendrawtransaction "$DepositTxSigned" #>/dev/null 2>&1
 echo "Done"
 
 echo "-------------"
@@ -366,19 +491,18 @@ echo "-------------"
 
 bitcoin-cli getrawtransaction "$DepositTxID" true "$DepositTxBlock"
 
+clear;echo ""
+
 echo "-------------"
-echo "***Smart Vault Setup Complete!***"
+echo "*** Smart Vault Setup Complete! ***"
 echo "-------------"
 
 #####################################
 
-echo "User is now assured of his"
+echo "You are now assured of your"
 echo "Bitcoin's safety and security"
-echo "as his Bitcoin is now in Joint Custody and"
+echo "as your Bitcoin is now in Joint Custody and"
 echo "rest everything is managed using the"
-echo "Partially Signed Provisional Transactions"
-echo "with User and Ledger after the Smart Vault setup!"
+echo "Partially Signed Unlock Txs (Provisional Txs)"
+echo "with you and Sentinel after the Smart Vault setup!"
 echo "-------------"
-
-read -n 1 -s -r -p "Press any key to continue..."
-echo ""

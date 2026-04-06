@@ -23,4 +23,4 @@ echo ""
 
 #######################################
 
-source SmartVault.Demo.Recovery_Using_Option_3.sh
+source SmartVault.Demo.Spend_Using_Option_1.sh

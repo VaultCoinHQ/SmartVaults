@@ -18,12 +18,12 @@ Smart Vaults™ (Layer 2) are like Multisig or MPC Vaults on steroids. Key diffe
 
 ## Next-Gen Scalable Security
 
-1. "Unlocking" and "Spending" from your Smart Vaults™ are distinct events (transactions) with a programmable delay between them unlike MultiSig/MPC Vaults.
+1. "Unlocking" and "Spending" from your Smart Vault™ are distinct events (transactions) with a programmable delay between them unlike MultiSig/MPC Vaults.
 2. The mandatory "Unlock" which is visible on-chain as a transaction alerts all participants of a Smart Vault™ to take corrective actions if the unlock was not initiated by them in the first place.
 3. When `m private-keys` are presumably used by an adversary to unlock-and-spend from your Smart Vault™ locked with `n private-keys`, you can use any `m+1 private-keys upto n` to override the malicious unlock-and-spend attempt and recover your Bitcoin before the preset delay expires i.e. `m-to-n of n`. (Assuming all private-keys have equal priority.)
 4. Stealing becomes impossible unless adversaries have all the `n private-keys`.
 5. Can be customized to allow some private-keys and combinations to override other private-keys and combinations.
-6. Use simple yet powerful Zero-Knowledge Proofs to determine which private-keys and combinations take precedence over other private-keys and combinations.
+6. Use simple yet powerful Zero-Disclosure Proofs to determine which private-keys and combinations take precedence over other private-keys and combinations.
 7. Protects against hacks, social engineering, insider fraud, etc.
 8. Optional on-chain “Out of Band” Authentication & Autherization with Hardware Tokens (proprietary technology).
 
@@ -41,35 +41,27 @@ You have absolute control of your private-keys and coins just like "Self Custody
 
 With just a simple MultiSig transaction and a couple of Partially Signed Bitcoin Transactions distributed rather cleverly between the participants, Hybrid Custody using L2 Smart Vaults drastically increases the safety/security of your Bitcoin and even handles inheritance for you without any prior arrangements with your beneficiaries. (Watch videos linked below for detailed explanation of the Layer 2 protocol)
 
-This repository demostrates the feasibility and steps involved during setup, termination and recovery from Smart Vaults™ in their most basic form with just one private-key from "User" and one private-key from "Ledger" who doubles up as a Hybrid Custody Provider. 
+This repository demostrates the feasibility and steps involved during setup, termination and recovery from Smart Vaults™ in their most basic form with just one private-key from "User" and one private-key from "Sentinel" who doubles up as a Hybrid Custody Provider. 
 
-When User's private key is lost, he can recover his Bitcoin using just Ledger's private key as with any Managed Custody Provider.
+When User's private key is lost, he can recover his Bitcoin using just Sentinel's private key as with any Managed Custody Provider.
 
-And when User's private-key is stolen and used to initiate the unlock-and-spend process, User can cosign a spending transaction with Ledger, override the attempt and safely recover his Bitcoin.
+And when User's private-key is stolen and used to initiate the unlock-and-spend process, User can cosign a recovery transaction with Sentinel, override the malicious attempt and safely recover his Bitcoin.
 
-Lastly, if Ledger tries to steal User's Bitcoin using it's private-key, User can always override that unlock-and-spend attempt and safely transfer his Bitcoin to wherever he wishes using just his private-key.
+Lastly, if Sentinel tries to steal User's Bitcoin using it's private-key, User can always override that unlock-and-spend attempt and safely transfer his Bitcoin to wherever he wishes using just his private-key.
 
 The POC Implementation in this GitHub repo clearly demonstrates all these scenarios.
 
 Once you get this, you can easily extend your undertanding to include more factors/private-keys as well as complex contingency planning using multiple factors/private-keys from multiple participants.
 
->Disclaimer: Ledger's name is used hypothetically as a Hybrid Custodian for ease of understanding and no relation is implied to Ledger or with anybody at Ledger.
-
 >Proprietary Technology - See **Legal Notice** below!
 
 Everything is explained in detail in the videos below.
 
-## Hybrid Custody using Hardware Wallets - Intro (Video)
+## Hybrid Custody using Smart Vaults - Technology Overview (Video)
 
-[![Hybrid Custody using Hardware Wallets - Intro (Video)](https://img.youtube.com/vi/g2tOAHZzqW8/mqdefault.jpg)](https://www.youtube.com/watch?v=g2tOAHZzqW8)
+[![Hybrid Custody using Smart Vaults - Technology Overview (Video)](https://img.youtube.com/vi/IQqM77cRdIM/mqdefault.jpg)](https://www.youtube.com/watch?v=pEIcKoIA0nY)
 
-https://youtu.be/g2tOAHZzqW8 (Click to play)
-
-## Hybrid Custody using Ledger - Technology Overview (Video)
-
-[![Hybrid Custody using Ledger - Technology Overview (Video)](https://img.youtube.com/vi/IQqM77cRdIM/mqdefault.jpg)](https://www.youtube.com/watch?v=IQqM77cRdIM)
-
-https://youtu.be/IQqM77cRdIM (Click to play)
+https://www.youtube.com/watch?v=pEIcKoIA0nY (Click to play)
 
 ## Proof Of Concept Implementation - Setup (Local)
 
@@ -82,7 +74,7 @@ https://youtu.be/IQqM77cRdIM (Click to play)
 ## Proof of Concept Implementation - Setup (Docker)
 
 1. Install Docker if not already installed - https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
-2. Clone or Checkout this repository - `git clone https://github.com/praveenbm5/SmartVaults.git`
+2. Clone or Checkout this repository - `git clone https://github.com/VaultCoinHQ/SmartVaults.git`
 3. Change working directory to cloned repo directory - `cd SmartVaults`
 4. Important - Customize Dockerfile included in the repo to download appropriate bitcoin binary archive for the architecture and platform you are working on
 5. Build Image - `sudo docker build -t smartvaults .`
@@ -92,12 +84,13 @@ https://youtu.be/IQqM77cRdIM (Click to play)
 ## Proof of Concept Implementation - Demo
 
 1. Open a shell/cmd in the project/repository's root directory. (SmartVaults)
-2. Inspect and run `./SmartVault.Demo.Setup_and_Recovery_Using_Option_1.sh` to understand Smart Vault™ setup (Participants: User & Ledger) and recovery using Option 1 which requires only User's private-key. Useful when Ledger has lost its private-keys due to unforeseen circumstances or when User wants to independently terminate the Smart Vault™ without any dependence on Ledger.
-3. Inspect and run `./SmartVault.Demo.Setup_and_Recovery_Using_Option_2.sh` to understand Smart Vault™ setup (Participants: User & Ledger) and recovery using Option 2 which requires only Ledger's private-key. Useful when User has lost his private-keys. Option 2 has lower priority than Option 1. So User can override any attempt by Ledger to unlock the Smart Vault™ without his consent.
-4. Inspect and run `./SmartVault.Demo.Setup_and_Recovery_Using_Option_3.sh` to understand Smart Vault™ setup (Participants: User & Ledger) and recovery using Option 3 which requires both User's and Ledger's private-keys. Option 3 has higher priority than Option 1 and Option 2. Useful when either User's or Ledger's private-key is presumed stolen and was used to unlock the Smart Vault™. 
-5. All demos are designed to run on a Bitcoin RegTest network and create a fresh RegTest node to communicate with. See SmartVault.Demo.Initialize_RegTest_Network.sh (executed inside above demo scripts) for more details.
-6. All demos follow the same Smart Vault™ setup process with "User" and "Ledger" as paritcipants. See SmartVault.Demo.Setup.sh (executed inside above demo scripts) for more info.
-7. All demos write detailed logs to respective log files in the `logs` folder and you can go through sample logs from the above demos in the `logs` folder to get an idea about how these demos work even before you run them on your machine.
+2. Inspect and run `./SmartVault.Demo.sh` for an interactive demo of Hybrid Custody using Layer 2 Smart Vaults™ (Participants: User & Sentinel).
+3. Inspect and run `./SmartVault.Demo.Setup_and_Spend_Using_Option_1.sh` to understand Smart Vault™ setup (Participants: User & Sentinel) and termination/spend using Option 1 which requires only User's private-key. This path mimics Self-Custody.
+4. Inspect and run `./SmartVault.Demo.Setup_and_Recovery_Using_Option_2.sh` to understand Smart Vault™ setup (Participants: User & Sentinel) and recovery using Option 2 which requires only Sentinel's private-key. Useful when User has lost his private-keys. Option 2 has lower priority than Option 1. So User can override any attempt by Sentinel to unlock the Smart Vault™ without his consent.
+5. Inspect and run `./SmartVault.Demo.Setup_and_Recovery_Using_Option_3.sh` to understand Smart Vault™ setup (Participants: User & Sentinel) and recovery using Option 3 which requires both User's and Sentinel's private-keys. Option 3 has higher priority than Option 1 and Option 2. Useful when either User's or Sentinel's private-key is presumed stolen and was used to unlock the Smart Vault™. 
+6. All demos are designed to run on a Bitcoin RegTest network and create a fresh RegTest node to communicate with. See SmartVault.Demo.Initialize_RegTest_Network.sh (executed inside above demo scripts) for more details.
+7. All demos follow the same Smart Vault™ setup process with "User" and "Sentinel" as paritcipants. See SmartVault.Demo.Setup.sh (executed inside above demo scripts) for more info.
+8. All demos write detailed logs to respective log files in the `logs` folder and you can go through sample logs from the above demos in the `logs` folder to get an idea about how these demos work even before you run them on your machine.
 
 ## Legal Notice
 

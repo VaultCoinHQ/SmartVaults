@@ -14,15 +14,15 @@ Waiting for 5 secs for Bitcoin Demon to Initialize...
 -------------
 Generating User's Priv-Pub-Addr
 -------------
-Private Key: cQntiQZMYMrkgy6vhRMenUoyyMXmRNCSSHJ46hbv2xVSaVvxZkYE
-Public Key: 02b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b5
-Address: bcrt1qef8r95yfrjfl5yq42gjyncjuxaufxmf5fp9n50
+Private Key: cPKccQyrRewtzR3zhgRxmEhvj8wCaGAR9SDM1tq9iKvR3Nog4jYq
+Public Key: 02403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e4
+Address: bcrt1qlgurlrukvrunen39huq3llwryzdkxjtv9803ep
 -------------
-Generating Ledger's Priv-Pub-Addr
+Generating Sentinel's Priv-Pub-Addr
 -------------
-Private Key: cV2PsknGibyHA6K3WPeZcDyTjS5CLtvHjh2AjCUcJEL8updws24f
-Public Key: 038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb
-Address: bcrt1qe905cggs3rx32vettsshehcx9pj3q7d8v8l39l
+Private Key: cQRv1yHN7N57QQVA33yqBww1K5MgDQ8Fke1W3j2jTdLT79CzCfge
+Public Key: 02e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc
+Address: bcrt1qhuqvhrqp6et5v6pqwtvtl4vnvr7mnpxvhkdq27
 -------------
 Generating blocks to bootstrap Bitcoin RegTest Blockchain
 -------------
@@ -30,28 +30,28 @@ Done
 -------------
 Deposit Tx Redeem Script
 -------------
-21038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b500547a547a527152ae
+2102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e400547a547a527152ae
 -------------
 Checking Deposit Tx Redeem Script
 -------------
 {
-  "asm": "038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb 02b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b5 0 4 OP_ROLL 4 OP_ROLL 2 OP_2ROT 2 OP_CHECKMULTISIG",
-  "desc": "raw(21038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b500547a547a527152ae)#93facgz2",
+  "asm": "02e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc 02403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e4 0 4 OP_ROLL 4 OP_ROLL 2 OP_2ROT 2 OP_CHECKMULTISIG",
+  "desc": "raw(2102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e400547a547a527152ae)#mxwn2aum",
   "type": "nonstandard",
-  "p2sh": "2N9wVt1ZyDzxSUhywY5bKCx7HPDzFY6vTYJ",
+  "p2sh": "2NEKcxWMmWcM2vafQAjnttuwjNLfFoB7zDp",
   "segwit": {
-    "asm": "0 88c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd8",
-    "desc": "wsh(raw(21038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b500547a547a527152ae))#9tftlrhm",
-    "hex": "002088c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd8",
-    "address": "bcrt1q3rq5pvluvukjptrq7c6gqu9dge3ng2jxf6hets9upjr6l0t0pnvq7sy75l",
+    "asm": "0 e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce00",
+    "desc": "wsh(raw(2102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e400547a547a527152ae))#7w9nzy8n",
+    "hex": "0020e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce00",
+    "address": "bcrt1qu9cg7rwkazn9pr2jme5tn9cms3gg4lujerdkeyzpv9k5w6y3ecqq9mmv7a",
     "type": "witness_v0_scripthash",
-    "p2sh-segwit": "2N54TB8afRfvFyQNFvL9YTDcTDgaR3JaWUU"
+    "p2sh-segwit": "2N7vivefTLizn7kjXNFkr7tyJeeDDxjnKJk"
   }
 }
 -------------
 Deposit Tx - Script to Address
 -------------
-bcrt1q3rq5pvluvukjptrq7c6gqu9dge3ng2jxf6hets9upjr6l0t0pnvq7sy75l
+bcrt1qu9cg7rwkazn9pr2jme5tn9cms3gg4lujerdkeyzpv9k5w6y3ecqq9mmv7a
 -------------
 Creating Unsigned Deposit Tx
 -------------
@@ -59,13 +59,13 @@ Done
 -------------
 Unsigned Deposit Tx
 -------------
-0200000001b99846c95e6e6b7cee4e69b83451df5a4a0c321da5cfd91bafeb2ba6c6efc7950000000000fdffffff01606b042a0100000022002088c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd800000000
+0200000001c4d0a159f8b061af4537f47334915944b59cede9e638d54c54019c1eb509056b0000000000fdffffff01606b042a01000000220020e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce0000000000
 -------------
 Checking Unsigned Deposit Tx
 -------------
 {
-  "txid": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
-  "hash": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
+  "txid": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
+  "hash": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
   "version": 2,
   "size": 94,
   "vsize": 94,
@@ -73,7 +73,7 @@ Checking Unsigned Deposit Tx
   "locktime": 0,
   "vin": [
     {
-      "txid": "95c7efc6a62bebaf1bd9cfa51d320c4a5adf5134b8694eee7c6b6e5ec94698b9",
+      "txid": "6b0509b51e9c01544cd538e6e9ed9cb54459913473f43745af61b0f859a1d0c4",
       "vout": 0,
       "scriptSig": {
         "asm": "",
@@ -87,10 +87,10 @@ Checking Unsigned Deposit Tx
       "value": 49.99900000,
       "n": 0,
       "scriptPubKey": {
-        "asm": "0 88c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd8",
-        "desc": "addr(bcrt1q3rq5pvluvukjptrq7c6gqu9dge3ng2jxf6hets9upjr6l0t0pnvq7sy75l)#rl9qc7wn",
-        "hex": "002088c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd8",
-        "address": "bcrt1q3rq5pvluvukjptrq7c6gqu9dge3ng2jxf6hets9upjr6l0t0pnvq7sy75l",
+        "asm": "0 e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce00",
+        "desc": "addr(bcrt1qu9cg7rwkazn9pr2jme5tn9cms3gg4lujerdkeyzpv9k5w6y3ecqq9mmv7a)#c8z9x87k",
+        "hex": "0020e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce00",
+        "address": "bcrt1qu9cg7rwkazn9pr2jme5tn9cms3gg4lujerdkeyzpv9k5w6y3ecqq9mmv7a",
         "type": "witness_v0_scripthash"
       }
     }
@@ -103,13 +103,13 @@ Done
 -------------
 Signed Deposit Tx
 -------------
-02000000000101b99846c95e6e6b7cee4e69b83451df5a4a0c321da5cfd91bafeb2ba6c6efc7950000000000fdffffff01606b042a0100000022002088c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd80247304402204ab280ca84094db7e45cbad68afa71291e1d875a970c516f8c1dea62e6a14ec7022059ee8c6eb54eb0d237835455e0af2e6eda5b7df23418e5862f412c8afb30f016012102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b500000000
+02000000000101c4d0a159f8b061af4537f47334915944b59cede9e638d54c54019c1eb509056b0000000000fdffffff01606b042a01000000220020e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce0002473044022062bc1488026726ff180c096bc3d4b5cb0d1369c1cf167ed9111dcffa4a47308b02200a5271fbf3b8d7a3a5b826ca5b981d7b30dabb1db8331b64b450f2f8f5f6652b012102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e400000000
 -------------
 Checking Signed Deposit Tx
 -------------
 {
-  "txid": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
-  "hash": "b6e638f4efc2e8f88b6d6480b84e4b62bfee25cf56b139e1441fbd42879201f8",
+  "txid": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
+  "hash": "afe2d78625921e2f3766a3bf10c075311f84b4beeafa42f7fc27fe029c32c82a",
   "version": 2,
   "size": 203,
   "vsize": 122,
@@ -117,15 +117,15 @@ Checking Signed Deposit Tx
   "locktime": 0,
   "vin": [
     {
-      "txid": "95c7efc6a62bebaf1bd9cfa51d320c4a5adf5134b8694eee7c6b6e5ec94698b9",
+      "txid": "6b0509b51e9c01544cd538e6e9ed9cb54459913473f43745af61b0f859a1d0c4",
       "vout": 0,
       "scriptSig": {
         "asm": "",
         "hex": ""
       },
       "txinwitness": [
-        "304402204ab280ca84094db7e45cbad68afa71291e1d875a970c516f8c1dea62e6a14ec7022059ee8c6eb54eb0d237835455e0af2e6eda5b7df23418e5862f412c8afb30f01601",
-        "02b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b5"
+        "3044022062bc1488026726ff180c096bc3d4b5cb0d1369c1cf167ed9111dcffa4a47308b02200a5271fbf3b8d7a3a5b826ca5b981d7b30dabb1db8331b64b450f2f8f5f6652b01",
+        "02403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e4"
       ],
       "sequence": 4294967293
     }
@@ -135,10 +135,10 @@ Checking Signed Deposit Tx
       "value": 49.99900000,
       "n": 0,
       "scriptPubKey": {
-        "asm": "0 88c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd8",
-        "desc": "addr(bcrt1q3rq5pvluvukjptrq7c6gqu9dge3ng2jxf6hets9upjr6l0t0pnvq7sy75l)#rl9qc7wn",
-        "hex": "002088c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd8",
-        "address": "bcrt1q3rq5pvluvukjptrq7c6gqu9dge3ng2jxf6hets9upjr6l0t0pnvq7sy75l",
+        "asm": "0 e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce00",
+        "desc": "addr(bcrt1qu9cg7rwkazn9pr2jme5tn9cms3gg4lujerdkeyzpv9k5w6y3ecqq9mmv7a)#c8z9x87k",
+        "hex": "0020e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce00",
+        "address": "bcrt1qu9cg7rwkazn9pr2jme5tn9cms3gg4lujerdkeyzpv9k5w6y3ecqq9mmv7a",
         "type": "witness_v0_scripthash"
       }
     }
@@ -149,41 +149,41 @@ Provsional Tx Redeem Script
 -------------
 Setting Option 1 (User Private-Key Only) Delay to 1000
 Encoded bytes (hex): e803
-Setting Option 2 (Ledger Private-Key Only) Delay to 5000
+Setting Option 2 (Sentinel Private-Key Only) Delay to 5000
 Encoded bytes (hex): 8813
 Hex:
-02881302e80321038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b554795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868
+02881302e8032102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e454795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868
 -------------
 Checking Provisional Tx Redeem Script
 -------------
 {
-  "asm": "5000 1000 038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb 02b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b5 4 OP_PICK 2 OP_EQUAL OP_IF OP_ROT OP_DROP OP_ROT OP_DROP OP_ROT OP_DROP 0 4 OP_ROLL 4 OP_ROLL 2 OP_2ROT 2 OP_CHECKMULTISIG OP_ELSE 4 OP_ROLL OP_IF OP_DROP OP_NIP OP_ROT OP_SWAP OP_CHECKSIGVERIFY OP_CHECKSEQUENCEVERIFY OP_DROP 1 OP_ELSE OP_NIP OP_ROT OP_DROP OP_ROT OP_SWAP OP_CHECKSIGVERIFY OP_CHECKSEQUENCEVERIFY OP_DROP 1 OP_ENDIF OP_ENDIF",
-  "desc": "raw(02881302e80321038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b554795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868)#96mlhja4",
+  "asm": "5000 1000 02e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc 02403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e4 4 OP_PICK 2 OP_EQUAL OP_IF OP_ROT OP_DROP OP_ROT OP_DROP OP_ROT OP_DROP 0 4 OP_ROLL 4 OP_ROLL 2 OP_2ROT 2 OP_CHECKMULTISIG OP_ELSE 4 OP_ROLL OP_IF OP_DROP OP_NIP OP_ROT OP_SWAP OP_CHECKSIGVERIFY OP_CHECKSEQUENCEVERIFY OP_DROP 1 OP_ELSE OP_NIP OP_ROT OP_DROP OP_ROT OP_SWAP OP_CHECKSIGVERIFY OP_CHECKSEQUENCEVERIFY OP_DROP 1 OP_ENDIF OP_ENDIF",
+  "desc": "raw(02881302e8032102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e454795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868)#fdj4fu2z",
   "type": "nonstandard",
-  "p2sh": "2N32WwJE7VHj8xF2KFqPMX1QryYPDiYwkrf",
+  "p2sh": "2MzRmrK8JEqxnV6v2fCGUomg3rfv3EEqECx",
   "segwit": {
-    "asm": "0 816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631",
-    "desc": "wsh(raw(02881302e80321038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b554795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868))#y04me7mt",
-    "hex": "0020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631",
-    "address": "bcrt1qs9kkea9mchp223kuvzrs72984d3n0kxf38qm6t9vs8npwhaf2ccsxqr40q",
+    "asm": "0 88b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d",
+    "desc": "wsh(raw(02881302e8032102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e454795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868))#f2w7vfa3",
+    "hex": "002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d",
+    "address": "bcrt1q3zu58sdwpc55redg8k69krza33rwfpr53ae2ygten5222jerfvks4yrfny",
     "type": "witness_v0_scripthash",
-    "p2sh-segwit": "2MuGXkN9yKGHb7iTr9zivQZQtUPZu4E6mxW"
+    "p2sh-segwit": "2N1GTiQzVSLXeCSqSR2RWZEYmCXRDYqYoot"
   }
 }
 -------------
 Provisional Tx - Script to Address
 -------------
-bcrt1qs9kkea9mchp223kuvzrs72984d3n0kxf38qm6t9vs8npwhaf2ccsxqr40q
+bcrt1q3zu58sdwpc55redg8k69krza33rwfpr53ae2ygten5222jerfvks4yrfny
 -------------
 Creating Unsigned Provisional Tx
 -------------
-0200000001e6f8a0d7d88f18de9e43c2b534d41ef22e81c2fb8bec1962f8b464e8c142fcfe0000000000fdffffff01c0e4022a01000000220020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa9563100000000
+02000000017c1d5ccd50830854eff9f314e7bc5ccb75a1aa17c7e6417b984e41ae0e8d51f50000000000fdffffff01c0e4022a0100000022002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d00000000
 -------------
 Checking Unsigned Prov Tx Created by User
 -------------
 {
-  "txid": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
-  "hash": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
+  "txid": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
+  "hash": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
   "version": 2,
   "size": 94,
   "vsize": 94,
@@ -191,7 +191,7 @@ Checking Unsigned Prov Tx Created by User
   "locktime": 0,
   "vin": [
     {
-      "txid": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
+      "txid": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
       "vout": 0,
       "scriptSig": {
         "asm": "",
@@ -205,10 +205,10 @@ Checking Unsigned Prov Tx Created by User
       "value": 49.99800000,
       "n": 0,
       "scriptPubKey": {
-        "asm": "0 816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631",
-        "desc": "addr(bcrt1qs9kkea9mchp223kuvzrs72984d3n0kxf38qm6t9vs8npwhaf2ccsxqr40q)#dq8yfghf",
-        "hex": "0020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631",
-        "address": "bcrt1qs9kkea9mchp223kuvzrs72984d3n0kxf38qm6t9vs8npwhaf2ccsxqr40q",
+        "asm": "0 88b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d",
+        "desc": "addr(bcrt1q3zu58sdwpc55redg8k69krza33rwfpr53ae2ygten5222jerfvks4yrfny)#ka2kud9d",
+        "hex": "002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d",
+        "address": "bcrt1q3zu58sdwpc55redg8k69krza33rwfpr53ae2ygten5222jerfvks4yrfny",
         "type": "witness_v0_scripthash"
       }
     }
@@ -216,18 +216,18 @@ Checking Unsigned Prov Tx Created by User
 }
 -------------
 Simulating the transfer of Unsigned Provisional Tx copy
-to Ledger!
+to Sentinel!
 -------------
 [U] --> Unsigned Provisional Tx --> [L]
 -------------
-Ledger signs the Unsigned Provisional Tx
+Sentinel signs the Unsigned Provisional Tx
 with his Private Key
 -------------
 Original Tx:
 {
     "ins": [
         {
-            "tx_hash": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
+            "tx_hash": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
             "tx_pos": 0,
             "script": "",
             "sequence": 4294967293,
@@ -237,18 +237,18 @@ Original Tx:
     "outs": [
         {
             "value": 4999800000,
-            "script": "0020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631"
+            "script": "002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d"
         }
     ],
     "version": 2,
     "locktime": 0
 }
 Signature:
-3045022100c08ec96d02791485cfb046a7acb6d08c7f3ab4e45ab7478eed4de55c71a7528902203e89aef1272df4188fa5e660b24fb94dd7e5820ba8d4862ceccc3e4e300fc28701
+30450221008d1506712830eebf8736b1d2b7fd7f7ffd09a5248a53eeffaae4ad63b0e2dd7c02205f2ce3cbadbd1bd041b11652121db369e72c15b95dc4a55801c9be49393a628701
 -------------
-ProvTx - Ledger's Signature
+ProvTx - Sentinel's Signature
 -------------
-3045022100c08ec96d02791485cfb046a7acb6d08c7f3ab4e45ab7478eed4de55c71a7528902203e89aef1272df4188fa5e660b24fb94dd7e5820ba8d4862ceccc3e4e300fc28701
+30450221008d1506712830eebf8736b1d2b7fd7f7ffd09a5248a53eeffaae4ad63b0e2dd7c02205f2ce3cbadbd1bd041b11652121db369e72c15b95dc4a55801c9be49393a628701
 -------------
 Simulating the transfer of Partially Signed Provisional Tx
 to User!
@@ -262,7 +262,7 @@ Original Tx:
 {
     "ins": [
         {
-            "tx_hash": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
+            "tx_hash": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
             "tx_pos": 0,
             "script": "",
             "sequence": 4294967293,
@@ -272,21 +272,21 @@ Original Tx:
     "outs": [
         {
             "value": 4999800000,
-            "script": "0020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631"
+            "script": "002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d"
         }
     ],
     "version": 2,
     "locktime": 0
 }
 Signature:
-3045022100d91badb5d858386ee228cfff26f881c2ff74a2a8822e38b9a8adec5763b4c11802203e6fe65fc81fbe9403d071ffcc4fdc7f3d90a672efff1230f9506dc40679825e01
+30440220217bae9ff494fde95324ce8bbd2b1f49d34b7c9f6d343a73427506715dfd27f70220078526a7c5a4379741c757fa86debd81dddb5550e054f6157a1dab040fe05d0501
 -------------
 ProvTx - User Signature
 -------------
-3045022100d91badb5d858386ee228cfff26f881c2ff74a2a8822e38b9a8adec5763b4c11802203e6fe65fc81fbe9403d071ffcc4fdc7f3d90a672efff1230f9506dc40679825e01
+30440220217bae9ff494fde95324ce8bbd2b1f49d34b7c9f6d343a73427506715dfd27f70220078526a7c5a4379741c757fa86debd81dddb5550e054f6157a1dab040fe05d0501
 -------------
 Simulating the transfer of Partially Signed Provisional Tx copy
-to Ledger!
+to Sentinel!
 -------------
 [U] --> Partially Signed Provisional Tx --> [L]
 -------------
@@ -297,14 +297,14 @@ Done
 -------------
 Generating Block to confirm the Deposit Tx
 -------------
-Deposit Tx Block: 30082b14acb37aa33add69b251c76453c152e03037eb90915a34f5868b9412cc
+Deposit Tx Block: 7225b3aabc03021ed69cb847d6308b4d6bf95061b174fc99a23f152cfe2b618b
 -------------
 Confirmed Deposit Tx
 -------------
 {
   "in_active_chain": true,
-  "txid": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
-  "hash": "b6e638f4efc2e8f88b6d6480b84e4b62bfee25cf56b139e1441fbd42879201f8",
+  "txid": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
+  "hash": "afe2d78625921e2f3766a3bf10c075311f84b4beeafa42f7fc27fe029c32c82a",
   "version": 2,
   "size": 203,
   "vsize": 122,
@@ -312,15 +312,15 @@ Confirmed Deposit Tx
   "locktime": 0,
   "vin": [
     {
-      "txid": "95c7efc6a62bebaf1bd9cfa51d320c4a5adf5134b8694eee7c6b6e5ec94698b9",
+      "txid": "6b0509b51e9c01544cd538e6e9ed9cb54459913473f43745af61b0f859a1d0c4",
       "vout": 0,
       "scriptSig": {
         "asm": "",
         "hex": ""
       },
       "txinwitness": [
-        "304402204ab280ca84094db7e45cbad68afa71291e1d875a970c516f8c1dea62e6a14ec7022059ee8c6eb54eb0d237835455e0af2e6eda5b7df23418e5862f412c8afb30f01601",
-        "02b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b5"
+        "3044022062bc1488026726ff180c096bc3d4b5cb0d1369c1cf167ed9111dcffa4a47308b02200a5271fbf3b8d7a3a5b826ca5b981d7b30dabb1db8331b64b450f2f8f5f6652b01",
+        "02403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e4"
       ],
       "sequence": 4294967293
     }
@@ -330,19 +330,19 @@ Confirmed Deposit Tx
       "value": 49.99900000,
       "n": 0,
       "scriptPubKey": {
-        "asm": "0 88c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd8",
-        "desc": "addr(bcrt1q3rq5pvluvukjptrq7c6gqu9dge3ng2jxf6hets9upjr6l0t0pnvq7sy75l)#rl9qc7wn",
-        "hex": "002088c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd8",
-        "address": "bcrt1q3rq5pvluvukjptrq7c6gqu9dge3ng2jxf6hets9upjr6l0t0pnvq7sy75l",
+        "asm": "0 e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce00",
+        "desc": "addr(bcrt1qu9cg7rwkazn9pr2jme5tn9cms3gg4lujerdkeyzpv9k5w6y3ecqq9mmv7a)#c8z9x87k",
+        "hex": "0020e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce00",
+        "address": "bcrt1qu9cg7rwkazn9pr2jme5tn9cms3gg4lujerdkeyzpv9k5w6y3ecqq9mmv7a",
         "type": "witness_v0_scripthash"
       }
     }
   ],
-  "hex": "02000000000101b99846c95e6e6b7cee4e69b83451df5a4a0c321da5cfd91bafeb2ba6c6efc7950000000000fdffffff01606b042a0100000022002088c140b3fc672d20ac60f6348070ad4663342a464eaf95c0bc0c87afbd6f0cd80247304402204ab280ca84094db7e45cbad68afa71291e1d875a970c516f8c1dea62e6a14ec7022059ee8c6eb54eb0d237835455e0af2e6eda5b7df23418e5862f412c8afb30f016012102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b500000000",
-  "blockhash": "30082b14acb37aa33add69b251c76453c152e03037eb90915a34f5868b9412cc",
+  "hex": "02000000000101c4d0a159f8b061af4537f47334915944b59cede9e638d54c54019c1eb509056b0000000000fdffffff01606b042a01000000220020e1708f0dd6e8a6508d52de68b9971b84508aff92c8db6c9041616d476891ce0002473044022062bc1488026726ff180c096bc3d4b5cb0d1369c1cf167ed9111dcffa4a47308b02200a5271fbf3b8d7a3a5b826ca5b981d7b30dabb1db8331b64b450f2f8f5f6652b012102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e400000000",
+  "blockhash": "7225b3aabc03021ed69cb847d6308b4d6bf95061b174fc99a23f152cfe2b618b",
   "confirmations": 1,
-  "time": 1715371939,
-  "blocktime": 1715371939
+  "time": 1775320228,
+  "blocktime": 1775320228
 }
 -------------
 ***Smart Vault Setup Complete!***
@@ -352,26 +352,26 @@ Bitcoin's safety and security
 as his Bitcoin is now in Joint Custody and
 rest everything is managed using the
 Partially Signed Provisional Transactions
-with User and Ledger after the Smart Vault setup!
+with User and Sentinel after the Smart Vault setup!
 -------------
 Press any key to continue...
 -------------
 Simulating the recovery process by User
-in coordintion with Ledger
+in coordintion with Sentinel
 as his private-key is lost!
-(Requires only Ledger's private-key)
+(Requires only Sentinel's private-key)
 -------------
 Press any key to start recovery...
 -------------
-Ledger signs the Partially Signed
+Sentinel signs the Partially Signed
 Provisional Tx received from User
 with its Private Key
 -------------
 Done
 -------------
-Ledger's Private Key Generated Signature for Provisional Tx:
+Sentinel's Private Key Generated Signature for Provisional Tx:
 -------------
-3045022100c08ec96d02791485cfb046a7acb6d08c7f3ab4e45ab7478eed4de55c71a7528902203e89aef1272df4188fa5e660b24fb94dd7e5820ba8d4862ceccc3e4e300fc28701
+30450221008d1506712830eebf8736b1d2b7fd7f7ffd09a5248a53eeffaae4ad63b0e2dd7c02205f2ce3cbadbd1bd041b11652121db369e72c15b95dc4a55801c9be49393a628701
 -------------
 Fully Signed Provisional Tx :
 -------------
@@ -379,7 +379,7 @@ Unsigned Tx
 {
     "ins": [
         {
-            "tx_hash": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
+            "tx_hash": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
             "tx_pos": 0,
             "script": "",
             "sequence": 4294967293
@@ -388,7 +388,7 @@ Unsigned Tx
     "outs": [
         {
             "value": 4999800000,
-            "script": "0020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631"
+            "script": "002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d"
         }
     ],
     "version": 2,
@@ -398,7 +398,7 @@ Signed Tx
 {
     "ins": [
         {
-            "tx_hash": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
+            "tx_hash": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
             "tx_pos": 0,
             "script": "",
             "sequence": 4294967293
@@ -407,7 +407,7 @@ Signed Tx
     "outs": [
         {
             "value": 4999800000,
-            "script": "0020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631"
+            "script": "002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d"
         }
     ],
     "version": 2,
@@ -415,36 +415,36 @@ Signed Tx
     "witness": [
         {
             "number": 3,
-            "scriptCode": "483045022100c08ec96d02791485cfb046a7acb6d08c7f3ab4e45ab7478eed4de55c71a7528902203e89aef1272df4188fa5e660b24fb94dd7e5820ba8d4862ceccc3e4e300fc28701483045022100d91badb5d858386ee228cfff26f881c2ff74a2a8822e38b9a8adec5763b4c11802203e6fe65fc81fbe9403d071ffcc4fdc7f3d90a672efff1230f9506dc40679825e014d21038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b500547a547a527152ae"
+            "scriptCode": "4830450221008d1506712830eebf8736b1d2b7fd7f7ffd09a5248a53eeffaae4ad63b0e2dd7c02205f2ce3cbadbd1bd041b11652121db369e72c15b95dc4a55801c9be49393a6287014730440220217bae9ff494fde95324ce8bbd2b1f49d34b7c9f6d343a73427506715dfd27f70220078526a7c5a4379741c757fa86debd81dddb5550e054f6157a1dab040fe05d05014d2102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e400547a547a527152ae"
         }
     ],
     "marker": 0,
     "flag": 1
 }
-02000000000101e6f8a0d7d88f18de9e43c2b534d41ef22e81c2fb8bec1962f8b464e8c142fcfe0000000000fdffffff01c0e4022a01000000220020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa9563103483045022100c08ec96d02791485cfb046a7acb6d08c7f3ab4e45ab7478eed4de55c71a7528902203e89aef1272df4188fa5e660b24fb94dd7e5820ba8d4862ceccc3e4e300fc28701483045022100d91badb5d858386ee228cfff26f881c2ff74a2a8822e38b9a8adec5763b4c11802203e6fe65fc81fbe9403d071ffcc4fdc7f3d90a672efff1230f9506dc40679825e014d21038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b500547a547a527152ae00000000
+020000000001017c1d5ccd50830854eff9f314e7bc5ccb75a1aa17c7e6417b984e41ae0e8d51f50000000000fdffffff01c0e4022a0100000022002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d034830450221008d1506712830eebf8736b1d2b7fd7f7ffd09a5248a53eeffaae4ad63b0e2dd7c02205f2ce3cbadbd1bd041b11652121db369e72c15b95dc4a55801c9be49393a6287014730440220217bae9ff494fde95324ce8bbd2b1f49d34b7c9f6d343a73427506715dfd27f70220078526a7c5a4379741c757fa86debd81dddb5550e054f6157a1dab040fe05d05014d2102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e400547a547a527152ae00000000
 -------------
 Checking Fully Signed Provisional Tx :
 -------------
 {
-  "txid": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
-  "hash": "f53183f908e1ec15e89fbceed6eddea41b2ab097ad2ee9cbb1be615591d62562",
+  "txid": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
+  "hash": "e4c668f3242078b320020c9a8034b2d143f2e0c186557571be842cdbb72e4c27",
   "version": 2,
-  "size": 321,
+  "size": 320,
   "vsize": 151,
-  "weight": 603,
+  "weight": 602,
   "locktime": 0,
   "vin": [
     {
-      "txid": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
+      "txid": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
       "vout": 0,
       "scriptSig": {
         "asm": "",
         "hex": ""
       },
       "txinwitness": [
-        "3045022100c08ec96d02791485cfb046a7acb6d08c7f3ab4e45ab7478eed4de55c71a7528902203e89aef1272df4188fa5e660b24fb94dd7e5820ba8d4862ceccc3e4e300fc28701",
-        "3045022100d91badb5d858386ee228cfff26f881c2ff74a2a8822e38b9a8adec5763b4c11802203e6fe65fc81fbe9403d071ffcc4fdc7f3d90a672efff1230f9506dc40679825e01",
-        "21038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b500547a547a527152ae"
+        "30450221008d1506712830eebf8736b1d2b7fd7f7ffd09a5248a53eeffaae4ad63b0e2dd7c02205f2ce3cbadbd1bd041b11652121db369e72c15b95dc4a55801c9be49393a628701",
+        "30440220217bae9ff494fde95324ce8bbd2b1f49d34b7c9f6d343a73427506715dfd27f70220078526a7c5a4379741c757fa86debd81dddb5550e054f6157a1dab040fe05d0501",
+        "2102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e400547a547a527152ae"
       ],
       "sequence": 4294967293
     }
@@ -454,10 +454,10 @@ Checking Fully Signed Provisional Tx :
       "value": 49.99800000,
       "n": 0,
       "scriptPubKey": {
-        "asm": "0 816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631",
-        "desc": "addr(bcrt1qs9kkea9mchp223kuvzrs72984d3n0kxf38qm6t9vs8npwhaf2ccsxqr40q)#dq8yfghf",
-        "hex": "0020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631",
-        "address": "bcrt1qs9kkea9mchp223kuvzrs72984d3n0kxf38qm6t9vs8npwhaf2ccsxqr40q",
+        "asm": "0 88b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d",
+        "desc": "addr(bcrt1q3zu58sdwpc55redg8k69krza33rwfpr53ae2ygten5222jerfvks4yrfny)#ka2kud9d",
+        "hex": "002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d",
+        "address": "bcrt1q3zu58sdwpc55redg8k69krza33rwfpr53ae2ygten5222jerfvks4yrfny",
         "type": "witness_v0_scripthash"
       }
     }
@@ -468,15 +468,15 @@ Vaildate Fully Signed Provisional Tx
 -------------
 [
   {
-    "txid": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
-    "wtxid": "f53183f908e1ec15e89fbceed6eddea41b2ab097ad2ee9cbb1be615591d62562",
+    "txid": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
+    "wtxid": "e4c668f3242078b320020c9a8034b2d143f2e0c186557571be842cdbb72e4c27",
     "allowed": true,
     "vsize": 151,
     "fees": {
       "base": 0.00100000,
       "effective-feerate": 0.00662251,
       "effective-includes": [
-        "f53183f908e1ec15e89fbceed6eddea41b2ab097ad2ee9cbb1be615591d62562"
+        "e4c668f3242078b320020c9a8034b2d143f2e0c186557571be842cdbb72e4c27"
       ]
     }
   }
@@ -492,31 +492,31 @@ Done
 -------------
 Provisional Tx Block:
 -------------
-02b52a921e69f50e96967434f7a9ec3880c82fb4926568d8261e4b0800ffd037
+7810e744f21cfe4a758d099bb5defba181980097f00f6cc23cf383d95008952f
 -------------
 Confirmed Provisional Tx
 -------------
 {
   "in_active_chain": true,
-  "txid": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
-  "hash": "f53183f908e1ec15e89fbceed6eddea41b2ab097ad2ee9cbb1be615591d62562",
+  "txid": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
+  "hash": "e4c668f3242078b320020c9a8034b2d143f2e0c186557571be842cdbb72e4c27",
   "version": 2,
-  "size": 321,
+  "size": 320,
   "vsize": 151,
-  "weight": 603,
+  "weight": 602,
   "locktime": 0,
   "vin": [
     {
-      "txid": "fefc42c1e864b4f86219ec8bfbc2812ef21ed434b5c2439ede188fd8d7a0f8e6",
+      "txid": "f5518d0eae414e987b41e6c717aaa175cb5cbce714f3f9ef54088350cd5c1d7c",
       "vout": 0,
       "scriptSig": {
         "asm": "",
         "hex": ""
       },
       "txinwitness": [
-        "3045022100c08ec96d02791485cfb046a7acb6d08c7f3ab4e45ab7478eed4de55c71a7528902203e89aef1272df4188fa5e660b24fb94dd7e5820ba8d4862ceccc3e4e300fc28701",
-        "3045022100d91badb5d858386ee228cfff26f881c2ff74a2a8822e38b9a8adec5763b4c11802203e6fe65fc81fbe9403d071ffcc4fdc7f3d90a672efff1230f9506dc40679825e01",
-        "21038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b500547a547a527152ae"
+        "30450221008d1506712830eebf8736b1d2b7fd7f7ffd09a5248a53eeffaae4ad63b0e2dd7c02205f2ce3cbadbd1bd041b11652121db369e72c15b95dc4a55801c9be49393a628701",
+        "30440220217bae9ff494fde95324ce8bbd2b1f49d34b7c9f6d343a73427506715dfd27f70220078526a7c5a4379741c757fa86debd81dddb5550e054f6157a1dab040fe05d0501",
+        "2102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e400547a547a527152ae"
       ],
       "sequence": 4294967293
     }
@@ -526,24 +526,24 @@ Confirmed Provisional Tx
       "value": 49.99800000,
       "n": 0,
       "scriptPubKey": {
-        "asm": "0 816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631",
-        "desc": "addr(bcrt1qs9kkea9mchp223kuvzrs72984d3n0kxf38qm6t9vs8npwhaf2ccsxqr40q)#dq8yfghf",
-        "hex": "0020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa95631",
-        "address": "bcrt1qs9kkea9mchp223kuvzrs72984d3n0kxf38qm6t9vs8npwhaf2ccsxqr40q",
+        "asm": "0 88b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d",
+        "desc": "addr(bcrt1q3zu58sdwpc55redg8k69krza33rwfpr53ae2ygten5222jerfvks4yrfny)#ka2kud9d",
+        "hex": "002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d",
+        "address": "bcrt1q3zu58sdwpc55redg8k69krza33rwfpr53ae2ygten5222jerfvks4yrfny",
         "type": "witness_v0_scripthash"
       }
     }
   ],
-  "hex": "02000000000101e6f8a0d7d88f18de9e43c2b534d41ef22e81c2fb8bec1962f8b464e8c142fcfe0000000000fdffffff01c0e4022a01000000220020816d6cf4bbc5c2a546dc60870f28a7ab6337d8c989c1bd2cac81e6175fa9563103483045022100c08ec96d02791485cfb046a7acb6d08c7f3ab4e45ab7478eed4de55c71a7528902203e89aef1272df4188fa5e660b24fb94dd7e5820ba8d4862ceccc3e4e300fc28701483045022100d91badb5d858386ee228cfff26f881c2ff74a2a8822e38b9a8adec5763b4c11802203e6fe65fc81fbe9403d071ffcc4fdc7f3d90a672efff1230f9506dc40679825e014d21038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b500547a547a527152ae00000000",
-  "blockhash": "02b52a921e69f50e96967434f7a9ec3880c82fb4926568d8261e4b0800ffd037",
+  "hex": "020000000001017c1d5ccd50830854eff9f314e7bc5ccb75a1aa17c7e6417b984e41ae0e8d51f50000000000fdffffff01c0e4022a0100000022002088b943c1ae0e2941e5a83db45b0c5d8c46e484748f72a221799d14a54b234b2d034830450221008d1506712830eebf8736b1d2b7fd7f7ffd09a5248a53eeffaae4ad63b0e2dd7c02205f2ce3cbadbd1bd041b11652121db369e72c15b95dc4a55801c9be49393a6287014730440220217bae9ff494fde95324ce8bbd2b1f49d34b7c9f6d343a73427506715dfd27f70220078526a7c5a4379741c757fa86debd81dddb5550e054f6157a1dab040fe05d05014d2102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e400547a547a527152ae00000000",
+  "blockhash": "7810e744f21cfe4a758d099bb5defba181980097f00f6cc23cf383d95008952f",
   "confirmations": 1,
-  "time": 1715371939,
-  "blocktime": 1715371939
+  "time": 1775320228,
+  "blocktime": 1775320228
 }
 -------------
 Simulating Recovery by User using
 ***Option 2*** of Provisonal Tx
-(Using just Ledger's Private Key)
+(Using just Sentinel's Private Key)
 -------------
 Recovery Process - Start
 -------------
@@ -553,13 +553,13 @@ Done
 -------------
 Unsigned Recovery Tx
 -------------
-0200000001fa9a7615f15c8f1127bb2b2ab2898e853647d883367c41c51b58e884a447a8ed00000000008813000001205e012a01000000160014ca4e32d0891c93fa1015522449e25c3778936d3400000000
+020000000146decdb1e88ccff76ec0b6971e944b79d826c131683fd9922e7d915e4b9437b200000000008813000001205e012a01000000160014fa383f8f9660f93cce25bf011ffdc3209b63496c00000000
 -------------
 Checking Unsigned Recovery Tx
 -------------
 {
-  "txid": "96923362201dcc9b07396d2faf05aada2c7cff7f94fa5661868dd1dd5d444ecc",
-  "hash": "96923362201dcc9b07396d2faf05aada2c7cff7f94fa5661868dd1dd5d444ecc",
+  "txid": "8667dac74a5ba27bc5a8df77e777425993bf38266a2c912df29e94e30f32a322",
+  "hash": "8667dac74a5ba27bc5a8df77e777425993bf38266a2c912df29e94e30f32a322",
   "version": 2,
   "size": 82,
   "vsize": 82,
@@ -567,7 +567,7 @@ Checking Unsigned Recovery Tx
   "locktime": 0,
   "vin": [
     {
-      "txid": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
+      "txid": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
       "vout": 0,
       "scriptSig": {
         "asm": "",
@@ -581,10 +581,10 @@ Checking Unsigned Recovery Tx
       "value": 49.99700000,
       "n": 0,
       "scriptPubKey": {
-        "asm": "0 ca4e32d0891c93fa1015522449e25c3778936d34",
-        "desc": "addr(bcrt1qef8r95yfrjfl5yq42gjyncjuxaufxmf5fp9n50)#p93l9k55",
-        "hex": "0014ca4e32d0891c93fa1015522449e25c3778936d34",
-        "address": "bcrt1qef8r95yfrjfl5yq42gjyncjuxaufxmf5fp9n50",
+        "asm": "0 fa383f8f9660f93cce25bf011ffdc3209b63496c",
+        "desc": "addr(bcrt1qlgurlrukvrunen39huq3llwryzdkxjtv9803ep)#szlc4syg",
+        "hex": "0014fa383f8f9660f93cce25bf011ffdc3209b63496c",
+        "address": "bcrt1qlgurlrukvrunen39huq3llwryzdkxjtv9803ep",
         "type": "witness_v0_keyhash"
       }
     }
@@ -592,17 +592,17 @@ Checking Unsigned Recovery Tx
 }
 -------------
 Simulating the transfer of Unsigned Recovery Tx
-from User to Ledger!
+from User to Sentinel!
 -------------
 [U] --> Unsigned Provisional Tx --> [L]
 -------------
-Ledger Signs the Recovery Tx
+Sentinel Signs the Recovery Tx
 -------------
 Original Tx:
 {
     "ins": [
         {
-            "tx_hash": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
+            "tx_hash": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
             "tx_pos": 0,
             "script": "",
             "sequence": 5000,
@@ -612,18 +612,18 @@ Original Tx:
     "outs": [
         {
             "value": 4999700000,
-            "script": "0014ca4e32d0891c93fa1015522449e25c3778936d34"
+            "script": "0014fa383f8f9660f93cce25bf011ffdc3209b63496c"
         }
     ],
     "version": 2,
     "locktime": 0
 }
 Signature:
-3044022044e8e9d3747e97ba87ee9c93b23c17d58ef919ccfe116a82d8166e9d3f4e1ce502203a12382ba223938c41dda2ad8bd4d6adde715b1729122ce305a086eace55222601
+3045022100aed38c35d2fd58c14e038d6c121477cc11a9ddd3599a2e44f2f3350b1ab7f8cc022023b3a8f3d7ceda08ddbe991c48bc4cd36424347bcaaadfa0a26c12e1599fab9e01
 -------------
-Recovery Tx - Ledger's Signature
+Recovery Tx - Sentinel's Signature
 -------------
-3044022044e8e9d3747e97ba87ee9c93b23c17d58ef919ccfe116a82d8166e9d3f4e1ce502203a12382ba223938c41dda2ad8bd4d6adde715b1729122ce305a086eace55222601
+3045022100aed38c35d2fd58c14e038d6c121477cc11a9ddd3599a2e44f2f3350b1ab7f8cc022023b3a8f3d7ceda08ddbe991c48bc4cd36424347bcaaadfa0a26c12e1599fab9e01
 -------------
 Fully Signed Recovery Tx:
 -------------
@@ -631,7 +631,7 @@ Unsigned Tx
 {
     "ins": [
         {
-            "tx_hash": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
+            "tx_hash": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
             "tx_pos": 0,
             "script": "",
             "sequence": 5000
@@ -640,7 +640,7 @@ Unsigned Tx
     "outs": [
         {
             "value": 4999700000,
-            "script": "0014ca4e32d0891c93fa1015522449e25c3778936d34"
+            "script": "0014fa383f8f9660f93cce25bf011ffdc3209b63496c"
         }
     ],
     "version": 2,
@@ -650,7 +650,7 @@ Signed Tx
 {
     "ins": [
         {
-            "tx_hash": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
+            "tx_hash": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
             "tx_pos": 0,
             "script": "",
             "sequence": 5000
@@ -659,7 +659,7 @@ Signed Tx
     "outs": [
         {
             "value": 4999700000,
-            "script": "0014ca4e32d0891c93fa1015522449e25c3778936d34"
+            "script": "0014fa383f8f9660f93cce25bf011ffdc3209b63496c"
         }
     ],
     "version": 2,
@@ -667,36 +667,36 @@ Signed Tx
     "witness": [
         {
             "number": 3,
-            "scriptCode": "473044022044e8e9d3747e97ba87ee9c93b23c17d58ef919ccfe116a82d8166e9d3f4e1ce502203a12382ba223938c41dda2ad8bd4d6adde715b1729122ce305a086eace5522260101017602881302e80321038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b554795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868"
+            "scriptCode": "483045022100aed38c35d2fd58c14e038d6c121477cc11a9ddd3599a2e44f2f3350b1ab7f8cc022023b3a8f3d7ceda08ddbe991c48bc4cd36424347bcaaadfa0a26c12e1599fab9e0101017602881302e8032102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e454795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868"
         }
     ],
     "marker": 0,
     "flag": 1
 }
-02000000000101fa9a7615f15c8f1127bb2b2ab2898e853647d883367c41c51b58e884a447a8ed00000000008813000001205e012a01000000160014ca4e32d0891c93fa1015522449e25c3778936d3403473044022044e8e9d3747e97ba87ee9c93b23c17d58ef919ccfe116a82d8166e9d3f4e1ce502203a12382ba223938c41dda2ad8bd4d6adde715b1729122ce305a086eace5522260101017602881302e80321038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b554795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb27551686800000000
+0200000000010146decdb1e88ccff76ec0b6971e944b79d826c131683fd9922e7d915e4b9437b200000000008813000001205e012a01000000160014fa383f8f9660f93cce25bf011ffdc3209b63496c03483045022100aed38c35d2fd58c14e038d6c121477cc11a9ddd3599a2e44f2f3350b1ab7f8cc022023b3a8f3d7ceda08ddbe991c48bc4cd36424347bcaaadfa0a26c12e1599fab9e0101017602881302e8032102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e454795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb27551686800000000
 -------------
 Checking Fully Signed Recovery Tx:
 -------------
 {
-  "txid": "96923362201dcc9b07396d2faf05aada2c7cff7f94fa5661868dd1dd5d444ecc",
-  "hash": "06a8d348efd686ded4a59124c672e6ca5c66e26df67237e88d8f98d273b5144a",
+  "txid": "8667dac74a5ba27bc5a8df77e777425993bf38266a2c912df29e94e30f32a322",
+  "hash": "5392c70577095147d346f2c901cd13a6d62a2bd59d30a2d4ca9352f593d2bb22",
   "version": 2,
-  "size": 278,
-  "vsize": 131,
-  "weight": 524,
+  "size": 279,
+  "vsize": 132,
+  "weight": 525,
   "locktime": 0,
   "vin": [
     {
-      "txid": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
+      "txid": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
       "vout": 0,
       "scriptSig": {
         "asm": "",
         "hex": ""
       },
       "txinwitness": [
-        "3044022044e8e9d3747e97ba87ee9c93b23c17d58ef919ccfe116a82d8166e9d3f4e1ce502203a12382ba223938c41dda2ad8bd4d6adde715b1729122ce305a086eace55222601",
+        "3045022100aed38c35d2fd58c14e038d6c121477cc11a9ddd3599a2e44f2f3350b1ab7f8cc022023b3a8f3d7ceda08ddbe991c48bc4cd36424347bcaaadfa0a26c12e1599fab9e01",
         "01",
-        "02881302e80321038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b554795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868"
+        "02881302e8032102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e454795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868"
       ],
       "sequence": 5000
     }
@@ -706,10 +706,10 @@ Checking Fully Signed Recovery Tx:
       "value": 49.99700000,
       "n": 0,
       "scriptPubKey": {
-        "asm": "0 ca4e32d0891c93fa1015522449e25c3778936d34",
-        "desc": "addr(bcrt1qef8r95yfrjfl5yq42gjyncjuxaufxmf5fp9n50)#p93l9k55",
-        "hex": "0014ca4e32d0891c93fa1015522449e25c3778936d34",
-        "address": "bcrt1qef8r95yfrjfl5yq42gjyncjuxaufxmf5fp9n50",
+        "asm": "0 fa383f8f9660f93cce25bf011ffdc3209b63496c",
+        "desc": "addr(bcrt1qlgurlrukvrunen39huq3llwryzdkxjtv9803ep)#szlc4syg",
+        "hex": "0014fa383f8f9660f93cce25bf011ffdc3209b63496c",
+        "address": "bcrt1qlgurlrukvrunen39huq3llwryzdkxjtv9803ep",
         "type": "witness_v0_keyhash"
       }
     }
@@ -724,15 +724,15 @@ Vaildating Recovery Tx
 -------------
 [
   {
-    "txid": "96923362201dcc9b07396d2faf05aada2c7cff7f94fa5661868dd1dd5d444ecc",
-    "wtxid": "06a8d348efd686ded4a59124c672e6ca5c66e26df67237e88d8f98d273b5144a",
+    "txid": "8667dac74a5ba27bc5a8df77e777425993bf38266a2c912df29e94e30f32a322",
+    "wtxid": "5392c70577095147d346f2c901cd13a6d62a2bd59d30a2d4ca9352f593d2bb22",
     "allowed": true,
-    "vsize": 131,
+    "vsize": 132,
     "fees": {
       "base": 0.00100000,
-      "effective-feerate": 0.00763358,
+      "effective-feerate": 0.00757575,
       "effective-includes": [
-        "06a8d348efd686ded4a59124c672e6ca5c66e26df67237e88d8f98d273b5144a"
+        "5392c70577095147d346f2c901cd13a6d62a2bd59d30a2d4ca9352f593d2bb22"
       ]
     }
   }
@@ -748,31 +748,31 @@ Done
 -------------
 Recovery Tx Block ID:
 -------------
-14ef2418be7ab62a9f4d1e8a1bb166e84e98bb67d7acd155c8a8732c3dc87b41
+5f0c4445e58e78084018c62d929af964c2ba997349a83c130bdb6ad56b62043c
 -------------
 Confirmed Recovery Tx
 -------------
 {
   "in_active_chain": true,
-  "txid": "96923362201dcc9b07396d2faf05aada2c7cff7f94fa5661868dd1dd5d444ecc",
-  "hash": "06a8d348efd686ded4a59124c672e6ca5c66e26df67237e88d8f98d273b5144a",
+  "txid": "8667dac74a5ba27bc5a8df77e777425993bf38266a2c912df29e94e30f32a322",
+  "hash": "5392c70577095147d346f2c901cd13a6d62a2bd59d30a2d4ca9352f593d2bb22",
   "version": 2,
-  "size": 278,
-  "vsize": 131,
-  "weight": 524,
+  "size": 279,
+  "vsize": 132,
+  "weight": 525,
   "locktime": 0,
   "vin": [
     {
-      "txid": "eda847a484e8581bc5417c3683d84736858e89b22a2bbb27118f5cf115769afa",
+      "txid": "b237944b5e917d2e92d93f6831c126d8794b941e97b6c06ef7cf8ce8b1cdde46",
       "vout": 0,
       "scriptSig": {
         "asm": "",
         "hex": ""
       },
       "txinwitness": [
-        "3044022044e8e9d3747e97ba87ee9c93b23c17d58ef919ccfe116a82d8166e9d3f4e1ce502203a12382ba223938c41dda2ad8bd4d6adde715b1729122ce305a086eace55222601",
+        "3045022100aed38c35d2fd58c14e038d6c121477cc11a9ddd3599a2e44f2f3350b1ab7f8cc022023b3a8f3d7ceda08ddbe991c48bc4cd36424347bcaaadfa0a26c12e1599fab9e01",
         "01",
-        "02881302e80321038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b554795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868"
+        "02881302e8032102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e454795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb275516868"
       ],
       "sequence": 5000
     }
@@ -782,19 +782,19 @@ Confirmed Recovery Tx
       "value": 49.99700000,
       "n": 0,
       "scriptPubKey": {
-        "asm": "0 ca4e32d0891c93fa1015522449e25c3778936d34",
-        "desc": "addr(bcrt1qef8r95yfrjfl5yq42gjyncjuxaufxmf5fp9n50)#p93l9k55",
-        "hex": "0014ca4e32d0891c93fa1015522449e25c3778936d34",
-        "address": "bcrt1qef8r95yfrjfl5yq42gjyncjuxaufxmf5fp9n50",
+        "asm": "0 fa383f8f9660f93cce25bf011ffdc3209b63496c",
+        "desc": "addr(bcrt1qlgurlrukvrunen39huq3llwryzdkxjtv9803ep)#szlc4syg",
+        "hex": "0014fa383f8f9660f93cce25bf011ffdc3209b63496c",
+        "address": "bcrt1qlgurlrukvrunen39huq3llwryzdkxjtv9803ep",
         "type": "witness_v0_keyhash"
       }
     }
   ],
-  "hex": "02000000000101fa9a7615f15c8f1127bb2b2ab2898e853647d883367c41c51b58e884a447a8ed00000000008813000001205e012a01000000160014ca4e32d0891c93fa1015522449e25c3778936d3403473044022044e8e9d3747e97ba87ee9c93b23c17d58ef919ccfe116a82d8166e9d3f4e1ce502203a12382ba223938c41dda2ad8bd4d6adde715b1729122ce305a086eace5522260101017602881302e80321038e9f770c177a74c56ecec3424368209e4d2b16bbb66007c3f7e3b585861b76eb2102b6844387abacd716af1dbb370d825efc826b0b8592572d430e7bf19b437727b554795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb27551686800000000",
-  "blockhash": "14ef2418be7ab62a9f4d1e8a1bb166e84e98bb67d7acd155c8a8732c3dc87b41",
+  "hex": "0200000000010146decdb1e88ccff76ec0b6971e944b79d826c131683fd9922e7d915e4b9437b200000000008813000001205e012a01000000160014fa383f8f9660f93cce25bf011ffdc3209b63496c03483045022100aed38c35d2fd58c14e038d6c121477cc11a9ddd3599a2e44f2f3350b1ab7f8cc022023b3a8f3d7ceda08ddbe991c48bc4cd36424347bcaaadfa0a26c12e1599fab9e0101017602881302e8032102e1715ef5bb99c2cfde2aa442329b88440f0724102eab92d90fd5cdb27f667edc2102403a91babb085729280f6f85d6de57734f8e55e9e1db875cb1265fd8620a07e454795287637b757b757b7500547a547a527152ae67547a6375777b7cadb2755167777b757b7cadb27551686800000000",
+  "blockhash": "5f0c4445e58e78084018c62d929af964c2ba997349a83c130bdb6ad56b62043c",
   "confirmations": 1,
-  "time": 1715372773,
-  "blocktime": 1715372773
+  "time": 1775321062,
+  "blocktime": 1775321062
 }
 -------------
 ***Recovery Complete!***
