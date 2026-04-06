@@ -55,6 +55,9 @@ echo "Private Key: $UserPriv"
 echo "Public Key: $UserPub"
 echo "Address: $UserAdrs"
 
+read -n 1 -s -r -p "Press any key to continue..."
+echo ""
+
 #####################################
 
 echo "-------------"
