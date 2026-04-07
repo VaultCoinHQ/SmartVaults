@@ -10,7 +10,7 @@
 bitcoin-cli -named createwallet wallet_name="POC" descriptors=false >/dev/null 2>&1
 
 echo "-------------"
-echo "Bootstrapping the Sentinels (co-signers)"
+echo "Bootstrapping Sentinels (co-signers)"
 echo "-------------"
 
 #Sentinel - Keys
@@ -84,6 +84,7 @@ echo ""
 #UserPriv="cUrRAGYGV9Lj7yk7qFMZxxVeFTFqgt6BuJheb4EgVMafHef8f9p9"
 #UserPub="023320c921fb86d276cf996c97a3f3893e5da2c03926acd1d5160d0ccdb582f416"
 
+clear; echo ""
 echo "-------------"
 echo "Generating User's Priv-Pub-Addr"
 echo "-------------"
@@ -152,8 +153,12 @@ SentinelAddress="${SentinelAddresses[$SelectedSentinelIndex]}"
 SentinelPriv="${SentinelPrivs[$SelectedSentinelIndex]}"
 SentinelPub="${SentinelPubs[$SelectedSentinelIndex]}"
 
+clear; echo ""
+echo "-------------"
 echo "Selected Sentinel: $SentinelID • Rating: $SentinelRating ★ • Avg. Response Time: $SentinelART"
 echo "-------------"
+read -n 1 -s -r -p "Press any key to continue..."
+echo ""
 
 # Create Deposit Transaction
 
