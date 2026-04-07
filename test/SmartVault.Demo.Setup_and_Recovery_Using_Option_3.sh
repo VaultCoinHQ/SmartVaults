@@ -10,11 +10,11 @@ exec &> >(tee "logs/$script_name.log")
 
 #####################################
 
-source SmartVault.Demo.Initialize_RegTest_Network.sh
+source scripts/SmartVault.Demo.Initialize_RegTest_Network.sh
 
 #####################################
 
-source SmartVault.Demo.Setup.sh
+source scripts/SmartVault.Demo.Setup.sh
 
 #######################################
 
@@ -23,4 +23,4 @@ echo ""
 
 #######################################
 
-source SmartVault.Demo.Spend_Using_Option_1.sh
+source scripts/SmartVault.Demo.Recovery_Using_Option_3.sh

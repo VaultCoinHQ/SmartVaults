@@ -19,11 +19,13 @@ echo ""
 
 #####################################
 
-source SmartVault.Demo.Initialize_RegTest_Network.sh
+source scripts/SmartVault.Demo.Initialize_RegTest_Network.sh
 
 #####################################
 
-source SmartVault.Demo.Setup.sh
+clear; echo ""
+
+source scripts/SmartVault.Demo.Setup.sh
 
 #####################################
 
@@ -35,7 +37,7 @@ default=1
 echo "-------------"
 echo "What do you want to do next?"
 echo "1) Spend with your private-key from the Vault"
-echo "2) Initiate Recovery as your lost your private-key / Initiate Inheritance Flow"
+echo "2) Initiate Recovery as you lost your private-key / Initiate Inheritance Flow"
 echo "3) Initiate Override and Recovery as you suspect your private-keys are stolen"
 echo "-----------------"
 
@@ -48,13 +50,13 @@ choice=${choice:-$default}
 # Use 'case' to process the choice
 case "$choice" in
     1)
-        source SmartVault.Demo.Spend_Using_Option_1.sh #self spend
+        source scripts/SmartVault.Demo.Spend_Using_Option_1.sh #self spend
         ;;
     2)
-        source SmartVault.Demo.Recovery_Using_Option_2.sh #recovery when you private-keys are lost
+        source scripts/SmartVault.Demo.Recovery_Using_Option_2.sh #recovery when you private-keys are lost
         ;;
     3)
-        source SmartVault.Demo.Recovery_Using_Option_3.sh #recovery when private-keys are stolen
+        source scripts/SmartVault.Demo.Recovery_Using_Option_3.sh #recovery when private-keys are stolen
         ;;
     *)
         echo "Invalid selection '$choice'. Going with default option (1)."
@@ -62,5 +64,6 @@ case "$choice" in
         ;;
 esac
 
-echo ""
+echo "-----------------"
 echo "Check the source code and log here logs/$script_name.log for step wise details!"
+echo "-----------------"

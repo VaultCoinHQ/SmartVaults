@@ -217,7 +217,7 @@ echo "-------------"
 
 #Create blocks to unlock the timelock [Customize This in accordance with Option]
 bitcoin-cli generatetoaddress $UserDelay "$UserAdrs" >/dev/null 2>&1
-echo "Done"
+echo "$UserDelay Blocks Created!"
 
 echo "-------------"
 echo "Vaildating Spend Tx"
