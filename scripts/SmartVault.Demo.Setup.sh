@@ -10,7 +10,7 @@
 bitcoin-cli -named createwallet wallet_name="POC" descriptors=false >/dev/null 2>&1
 
 echo "-------------"
-echo "Bootstrapping the Sentinel (co-signer)"
+echo "Bootstrapping the Sentinels (co-signers)"
 echo "-------------"
 
 #Sentinel - Keys
@@ -18,20 +18,61 @@ echo "-------------"
 #SentinelPriv="cS71P5KPZbgGYhkXfTomFNYxq2NRccQb8Zkw3XEQkMVnQdSvAYQn"
 #SentinelPub="03cb7ef39e4bf4e487f73dd8c0ac6f0ef112a6ac7b3fa09546007121605bfa7c7b"
 
-echo "-------------"
-echo "Generating Sentinel's Priv-Pub-Addr"
-echo "-------------"
-
-SentinelAdrs=$(bitcoin-cli getnewaddress)
-SentinelPriv=$(bitcoin-cli dumpprivkey "$SentinelAdrs")
-SentinelPub=$(bitcoin-cli getaddressinfo "$SentinelAdrs" | jq -r .pubkey)
-
-echo "Private Key: $SentinelPriv"
-echo "Public Key: $SentinelPub"
-echo "Address: $SentinelAdrs"
+declare -a SentinelIDs
+declare -a SentinelRatings
+declare -a SentinelARTs
+declare -a SentinelAddresses
+declare -a SentinelPrivs
+declare -a SentinelPubs
 
 echo "-------------"
-echo "Sentinel is ready!"
+echo "Generating Sentinel 1: TrustMax's Credentials"
+echo "-------------"
+
+SentinelIDs+=("TrustMax")
+SentinelRatings+=("4.0")
+SentinelARTs+=("42 mins")
+SentinelAddresses+=("$(bitcoin-cli getnewaddress)")
+SentinelPrivs+=("$(bitcoin-cli dumpprivkey "${SentinelAddresses[0]}")")
+SentinelPubs+=("$(bitcoin-cli getaddressinfo "${SentinelAddresses[0]}" | jq -r .pubkey)")
+
+# echo "TrustMax's Private Key: ${SentinelPrivs[0]}"
+echo "TrustMax's Public Key: ${SentinelPubs[0]}"
+echo "TrustMax's Address: ${SentinelAddresses[0]}"
+
+echo "-------------"
+echo "Generating Sentinel 2: BlueOrion's Credentials"
+echo "-------------"
+
+SentinelIDs+=("BlueOrion")
+SentinelRatings+=("5.0")
+SentinelARTs+=("23 mins")
+SentinelAddresses+=("$(bitcoin-cli getnewaddress)")
+SentinelPrivs+=("$(bitcoin-cli dumpprivkey "${SentinelAddresses[1]}")")
+SentinelPubs+=("$(bitcoin-cli getaddressinfo "${SentinelAddresses[1]}" | jq -r .pubkey)")
+
+
+# echo "BlueOrion's Private Key: ${SentinelPrivs[1]}"
+echo "BlueOrion's Public Key: ${SentinelPubs[1]}"
+echo "BlueOrion's Address: ${SentinelAddresses[1]}"
+
+echo "-------------"
+echo "Generating Sentinel 3: EuroCrypt's Credentials"
+echo "-------------"
+
+SentinelIDs+=("EuroCrypt")
+SentinelRatings+=("4.5")
+SentinelARTs+=("34 mins")
+SentinelAddresses+=("$(bitcoin-cli getnewaddress)")
+SentinelPrivs+=("$(bitcoin-cli dumpprivkey "${SentinelAddresses[2]}")")
+SentinelPubs+=("$(bitcoin-cli getaddressinfo "${SentinelAddresses[2]}" | jq -r .pubkey)")
+
+# echo "EuroCrypt's Private Key: ${SentinelPrivs[2]}"
+echo "EuroCrypt's Public Key: ${SentinelPubs[2]}"
+echo "EuroCrypt's Address: ${SentinelAddresses[2]}"
+
+echo "-------------"
+echo "Sentinels are ready!"
 echo "Lets initialize your credentials..."
 echo "-------------"
 
@@ -82,6 +123,37 @@ echo "Balance: $(bitcoin-cli listunspent 1 9999999 "[\"$UserAdrs\"]" | jq '[.[].
 
 read -n 1 -s -r -p "Press any key to start Hybrid Custody Vault setup..."
 echo ""
+
+# Choose your Sentinel
+
+echo "-------------"
+echo "Choose your Sentinel:"
+echo "-------------"
+
+for i in "${!SentinelIDs[@]}"; do
+    echo "$((i + 1))) ${SentinelIDs[$i]} • Rating: ${SentinelRatings[$i]} ★ • Avg. Response Time: ${SentinelARTs[$i]}"
+done
+
+echo "-------------"
+read -p "Select [1-${#SentinelIDs[@]}] (Default: 1): " SentinelChoice
+
+SentinelChoice=${SentinelChoice:-1}
+
+if ! [[ "$SentinelChoice" =~ ^[1-9][0-9]*$ ]] || (( SentinelChoice < 1 || SentinelChoice > ${#SentinelIDs[@]} )); then
+    echo "Invalid selection '$SentinelChoice'. Going with default Sentinel (1)."
+    SentinelChoice=1
+fi
+
+SelectedSentinelIndex=$((SentinelChoice - 1))
+SentinelID="${SentinelIDs[$SelectedSentinelIndex]}"
+SentinelRating="${SentinelRatings[$SelectedSentinelIndex]}"
+SentinelART="${SentinelARTs[$SelectedSentinelIndex]}"
+SentinelAddress="${SentinelAddresses[$SelectedSentinelIndex]}"
+SentinelPriv="${SentinelPrivs[$SelectedSentinelIndex]}"
+SentinelPub="${SentinelPubs[$SelectedSentinelIndex]}"
+
+echo "Selected Sentinel: $SentinelID • Rating: $SentinelRating ★ • Avg. Response Time: $SentinelART"
+echo "-------------"
 
 # Create Deposit Transaction
 
