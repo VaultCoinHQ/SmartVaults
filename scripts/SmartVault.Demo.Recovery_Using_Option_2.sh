@@ -1,66 +1,50 @@
-#!/bin/bash
-
-script_name=$(basename "$0")
-echo "Logging all output to logs/$script_name.log"
-
-read -n 1 -s -r -p "Press any key to continue..."
-echo ""
-
-exec &> >(tee "logs/$script_name.log")
-
-#####################################
-
-source SmartVault.Demo.Initialize_RegTest_Network.sh
-
-#####################################
-
-source SmartVault.Demo.Setup.sh
-
 #######################################
 #
 # Now the User is intiating Recovery
-# as Ledger's private-key is lost or 
-# is not responding to Vault Termination Requests
-# (Requires only User's private-key)
+# in coordination with Sentinel
+# as his private-key is lost
+# (Requires only Sentinel's private-key)
 #
 #######################################
 
 echo "-------------"
-echo "Simulating the recovery process by User"
-echo "when Ledger's private-key is lost or" 
-echo "when Ledger is not responding to Vault Termination Requests"
-echo "(Requires only User's private-key)"
+echo "Simulating the recovery process by Sentinel"
+echo "as your private-key is lost!"
+echo "(Requires only Sentinel's private-key)"
 echo "-------------"
+
+echo "Balance in Recovery Addresss ($RecoveryAddress): $(bitcoin-cli listunspent 1 9999999 "[\"$RecoveryAddress\"]" | jq '[.[].amount] | add // 0') BTC"
+
 
 read -n 1 -s -r -p "Press any key to start recovery..."
 echo ""
 
 echo "-------------"
-echo "User signs the Partially Signed"
-echo "Provisional Tx received from Ledger"
-echo "with his Private Key"
+echo "Sentinel signs the Partially Signed"
+echo "Unlock Tx (Provisional Tx) received from User"
+echo "with its Private Key"
 echo "-------------"
 
 echo "Done"
 
-## Reusing the previously computed UserSignatureProv to reduce 
-## code redundancy for this POC
+## Reusing the previously computed SentinelSignatureProv to reduce 
+## code redundancy for this Demo
 
 echo "-------------"
-echo "User's Private Key Generated Signature for Provisional Tx:"
+echo "Sentinel's Private Key Generated Signature for Unlock Tx (Provisional Tx):"
 echo "-------------"
 
-echo $UserSignatureProv
+echo $SentinelSignatureProv
 
 echo "-------------"
-echo "Fully Signed Provisional Tx :"
+echo "Fully Signed Unlock Tx (Provisional Tx):"
 echo "-------------"
 
-ProvTxSigned=$(python3 helpers/add_witness.py $ProvTx $LedgerSignatureProv $UserSignatureProv $DepositTxRedeemScript)
+ProvTxSigned=$(python3 helpers/add_witness.py $ProvTx $SentinelSignatureProv $UserSignatureProv $DepositTxRedeemScript)
 echo $ProvTxSigned
 
 echo "-------------"
-echo "Checking Fully Signed Provisional Tx :"
+echo "Checking Fully Signed Unlock Tx (Provisional Tx) :"
 echo "-------------"
 
 bitcoin-cli decoderawtransaction "$ProvTxSigned"
@@ -71,20 +55,20 @@ ProvTxAmount=$(bitcoin-cli decoderawtransaction "$ProvTxSigned" | jq '.vout[0] |
 
 #######################################
 #
-# User will broadcast ProvTx
+# Sentinel will broadcast ProvTx
 # to intiative recovery
 #
 #######################################
 
 echo "-------------"
-echo "Vaildate Fully Signed Provisional Tx"
+echo "Vaildate Fully Signed Unlock Tx (Provisional Tx)"
 echo "-------------"
 
 #Test ProvTx
 bitcoin-cli testmempoolaccept "[ \"$ProvTxSigned\" ]"
 
 echo "-------------"
-echo "Broadcast Fully Signed Provisional Tx"
+echo "Broadcast Fully Signed Unlock Tx (Provisional Tx)"
 echo "-------------"
 
 #Broadcast ProvTx
@@ -92,7 +76,7 @@ bitcoin-cli sendrawtransaction "$ProvTxSigned" >/dev/null 2>&1
 echo "Done"
 
 echo "-------------"
-echo "Generating Block to confirm Provisional Tx"
+echo "Generating Block to confirm Unlock Tx (Provisional Tx)"
 echo "-------------"
 
 #Confirm the transaction in a block
@@ -101,44 +85,56 @@ bitcoin-cli generatetoaddress 1 "$UserAdrs" >/dev/null 2>&1
 echo "Done"
 
 echo "-------------"
-echo "Provisional Tx Block:"
+echo "Unlock Tx (Provisional Tx) Block:"
 echo "-------------"
 
 ProvTxBlock=$(bitcoin-cli getbestblockhash)
 echo $ProvTxBlock
 
 echo "-------------"
-echo "Confirmed Provisional Tx"
+echo "Confirmed Unlock Tx (Provisional Tx)"
 echo "-------------"
 
 bitcoin-cli getrawtransaction "$ProvTxId" true "$ProvTxBlock"
 
+echo "-------------"
+echo "Everyone including you can monitor the Vault and see the Unlock Tx on-chain"
+echo "and you can initiate recovery using Option 1 (spend with your private-key)"
+echo "if this Recovery was not requested by you and you suspect foul pay."
+echo "-------------"
+
+read -n 1 -s -r -p "Press any key to continue with recovery..."
+echo ""
+
 #########################################
 #
-# User will create a Recovery Tx
+# Sentinel will create a Recovery Tx
 # to complete recovery
 # 
 #########################################
 
 echo "-------------"
-echo "Simulating Recovery by User Using" # [Customize This in accordance with Option]
-echo "***Option 1*** of Provisonal Tx"
-echo "(Using just User Private Key)"
+echo "Simulating Recovery by Sentinel using" 
+echo "*** Option 2 *** of Unlock Tx (Provisional Tx)"
+echo "(Using just Sentinel's Private Key)"
 echo "-------------"
 
 echo "Recovery Process - Start"
 
 echo "-------------"
-echo "User creates the Recovery Tx"
+echo "Sentinel creates the Recovery Tx"
 echo "-------------"
 
-# [Customize this in accordance with Option]
+###########
+fee=0.001
+amount=$(echo "scale=8; $amount - $fee" | bc)
+
 read -r -d '' RecovTxInputs <<-EOM
     [
         {
             "txid": "$ProvTxId",
             "vout": 0,
-            "sequence": $UserDelay
+            "sequence": $SentinelDelay
         }
     ]
 EOM
@@ -146,7 +142,7 @@ EOM
 read -r -d '' RecovTxOutputs <<-EOM
     [
         {
-            "$UserAdrs": 49.997
+            "$RecoveryAddress": $amount
         }
     ]
 EOM
@@ -167,24 +163,22 @@ echo "-------------"
 bitcoin-cli decoderawtransaction "$RecovTx"
 
 echo "-------------"
-echo "User Signs the Recovery Tx"
+echo "Sentinel Signs the Recovery Tx"
 echo "-------------"
 
-UserSignatureRecov=$(python3 helpers/sign_tx.py $RecovTx 0 $ProvTxAmount $ProvTxRedeemScript $UserPriv SIGHASH_ALL True)
+SentinelSignatureRecov=$(python3 helpers/sign_tx.py $RecovTx 0 $ProvTxAmount $ProvTxRedeemScript $SentinelPriv SIGHASH_ALL True)
 
 echo "-------------"
-echo "Recovery Tx - User's Signature"
+echo "Recovery Tx - Sentinel's Signature"
 echo "-------------"
-echo $UserSignatureRecov
+echo $SentinelSignatureRecov
 
 echo "-------------"
 echo "Fully Signed Recovery Tx:"
 echo "-------------"
 
 # [Customize This in accordance with Option]
-# Do not use "00" to select the option for recovery. Use "0"
-# https://bitcoin.stackexchange.com/questions/122822/why-is-my-p2wsh-op-if-notif-argument-not-minimal
-RecovTxSigned=$(python3 helpers/add_witness.py $RecovTx $UserSignatureRecov 0 $ProvTxRedeemScript)
+RecovTxSigned=$(python3 helpers/add_witness.py $RecovTx $SentinelSignatureRecov 01 $ProvTxRedeemScript)
 
 echo $RecovTxSigned
 
@@ -199,7 +193,7 @@ RecovTxScriptPubKey=$(bitcoin-cli decoderawtransaction "$RecovTxSigned" | jq '.v
 
 #######################################
 #
-# User will broadcast RecovTx
+# Sentinel will broadcast RecovTx
 # to intiative recovery
 #
 #######################################
@@ -209,8 +203,9 @@ echo "Creating Blocks to satisfy Timelocks"
 echo "-------------"
 
 #Create blocks to unlock the timelock [Customize This in accordance with Option]
-bitcoin-cli generatetoaddress $UserDelay "$UserAdrs" >/dev/null 2>&1
-echo "Done"
+bitcoin-cli generatetoaddress $SentinelDelay "$UserAdrs" >/dev/null 2>&1
+
+echo "$SentinelDelay Blocks Created!"
 
 echo "-------------"
 echo "Vaildating Recovery Tx"
@@ -248,6 +243,8 @@ bitcoin-cli getrawtransaction "$RecovTxID" true "$RecovTxBlock"
 echo "-------------"
 echo "***Recovery Complete!***"
 echo "-------------"
+
+echo "Balance in Recovery Addresss ($RecoveryAddress): $(bitcoin-cli listunspent 1 9999999 "[\"$RecoveryAddress\"]" | jq '[.[].amount] | add // 0') BTC"
 
 ##############################
 
