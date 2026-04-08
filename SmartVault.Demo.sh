@@ -25,6 +25,15 @@ source scripts/SmartVault.Demo.Initialize_RegTest_Network.sh
 
 clear; echo ""
 
+source scripts/SmartVault.Demo.Bootstrap.sh
+
+#####################################
+
+while true
+do
+
+#####################################
+
 source scripts/SmartVault.Demo.Setup.sh
 
 #####################################
@@ -65,5 +74,25 @@ case "$choice" in
 esac
 
 echo "-----------------"
-echo "Check the source code and log here logs/$script_name.log for step wise details!"
+echo "Check the source code and log here logs/$script_name.log"
+echo "for a clear explanation of whats happening under the hood!"
 echo "-----------------"
+
+echo ""
+read -n 1 -s -r -p "Press [Return] to continue or any other key to exit..." continue_choice
+echo ""
+
+if [[ -n "$continue_choice" ]]; then
+    break
+fi
+
+#####################################
+
+done
+
+echo "-------------"
+echo "Stopping Bitcoind"
+echo "-------------"
+
+#stop bitcoind
+bitcoin-cli stop

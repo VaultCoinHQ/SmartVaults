@@ -76,7 +76,7 @@ echo "Generating Block to confirm Unlock Tx (Provisional Tx)"
 echo "-------------"
 
 #Confirm the transaction in a block
-bitcoin-cli generatetoaddress 1 "$UserAdrs" >/dev/null 2>&1
+bitcoin-cli generatetoaddress 1 "$SentinelAddress" >/dev/null 2>&1
 
 echo "Done"
 
@@ -216,7 +216,7 @@ echo "Creating Blocks to satisfy Timelocks"
 echo "-------------"
 
 #Create blocks to unlock the timelock [Customize This in accordance with Option]
-bitcoin-cli generatetoaddress $UserDelay "$UserAdrs" >/dev/null 2>&1
+bitcoin-cli generatetoaddress $UserDelay "$SentinelAddress" >/dev/null 2>&1
 echo "$UserDelay Blocks Created!"
 
 echo "-------------"
@@ -237,7 +237,7 @@ echo "Generating Block to confirm Spend Tx"
 echo "-------------"
 
 #Confirm the transaction in a block
-bitcoin-cli generatetoaddress 1 "$UserAdrs" >/dev/null 2>&1
+bitcoin-cli generatetoaddress 1 "$SentinelAddress" >/dev/null 2>&1
 echo "Done"
 
 echo "-------------"
@@ -260,9 +260,3 @@ echo "Balance in Destination Address ($TargetAddress): $(bitcoin-cli listunspent
 
 ##############################
 
-echo "-------------"
-echo "Stopping Bitcoind"
-echo "-------------"
-
-#stop bitcoind
-bitcoin-cli stop
