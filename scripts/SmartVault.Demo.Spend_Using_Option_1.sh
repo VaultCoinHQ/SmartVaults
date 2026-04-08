@@ -11,6 +11,7 @@
 echo "-------------"
 echo "Initiating Vault termination(spend)."
 echo "Baseline self-custody mechanics!" 
+echo ""
 echo "(Requires only User's private-key)"
 echo "-------------"
 

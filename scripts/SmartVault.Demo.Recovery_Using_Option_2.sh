@@ -9,7 +9,9 @@
 
 echo "-------------"
 echo "Simulating the recovery process by Sentinel"
-echo "as your private-key is lost!"
+echo "as your private-key is lost or is executing"
+echo "your inheritance mandate!"
+echo ""
 echo "(Requires only Sentinel's private-key)"
 echo "-------------"
 
