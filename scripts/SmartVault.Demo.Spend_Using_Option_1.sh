@@ -253,6 +253,8 @@ echo "-------------"
 
 bitcoin-cli getrawtransaction "$SpendTxID" true "$RecovTxBlock"
 
+clear; echo ""
+
 echo "-------------"
 echo "*** Spend/Transfer Complete! ***"
 echo "-------------"

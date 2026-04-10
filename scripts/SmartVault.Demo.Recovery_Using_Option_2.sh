@@ -242,6 +242,8 @@ echo "-------------"
 
 bitcoin-cli getrawtransaction "$RecovTxID" true "$RecovTxBlock"
 
+clear; echo ""
+
 echo "-------------"
 echo "***Recovery Complete!***"
 echo "-------------"
